@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Praxis — The Praxis Initiative at LUMS.">
+  <title>Praxis</title>
+  <link rel="icon" type="image/png" href="images/praxis-favicon-round.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a class="brand" href="index.html" aria-label="Praxis home">
+      <img src="images/praxis-logo.jpg" alt="Praxis logo">
+      <span class="brand-word">PRAXIS</span>
+    </a>
+    <div class="nav-links">
+      <a class="active" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="research.html">Research</a><a class="" href="events.html">Events</a><a class="" href="team.html">Team</a>
+      <a class="nav-cta" href="register.html">Get Involved ↗</a>
+    </div>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
+  </nav>
+  <div class="mobile-menu"><a class="active" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="research.html">Research</a><a class="" href="events.html">Events</a><a class="" href="team.html">Team</a><a href="register.html">Get Involved ↗</a></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active"><img src="images/hero-01.jpg" alt=""></div><div class="hero-slide "><img src="images/hero-02.jpg" alt=""></div><div class="hero-slide "><img src="images/hero-03.jpg" alt=""></div><div class="hero-slide "><img src="images/hero-04.jpg" alt=""></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-orbit orbit-one"></div>
+  <div class="hero-orbit orbit-two"></div>
+  <div class="container hero-content">
+    <div class="hero-copy">
+      <div class="eyebrow hero-eyebrow" data-hero-eyebrow></div>
+      <h1 data-hero-title></h1>
+      <p class="hero-description" data-hero-description></p>
+      <div class="hero-actions">
+        <a class="button button-primary" data-hero-button href="#about"></a>
+        <a class="text-link light-link" href="#about">Learn More ↘</a>
+      </div>
+    </div>
+    <div class="hero-counter">
+      <span data-hero-current>01</span>
+      <div class="hero-progress">
+        <button class="active" aria-label="Slide 1"></button>
+        <button aria-label="Slide 2"></button>
+        <button aria-label="Slide 3"></button>
+        <button aria-label="Slide 4"></button>
+      </div>
+      <span>04</span>
+    </div>
+  </div>
+</section>
+
+<div class="announcement">
+  <span class="announcement-dot"></span>
+  <div class="announcement-copy">
+    <span class="announcement-label" data-bind="announcement.label"></span>
+    <span class="announcement-text" data-bind="announcement.text"></span>
+  </div>
+  <a class="button button-dark" data-bind="announcement.buttonText" href="register.html"></a>
+</div>
+
+<section class="section" id="about">
+  <style>
+    .about-home-wrap { width:100%; }
+    .about-home-heading .eyebrow { margin-bottom:18px; }
+    .about-home-heading h2 {
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(58px,7.5vw,104px);
+      line-height:.88;
+      letter-spacing:-.055em;
+      font-weight:500;
+      max-width:900px;
+    }
+    .about-home-description {
+      margin-top:58px;
+      padding-top:32px;
+      border-top:1px solid rgba(13,12,12,.14);
+      max-width:1120px;
+    }
+    .about-home-description p {
+      margin:0 0 28px;
+      max-width:1120px;
+      font-size:clamp(20px,2vw,28px);
+      line-height:1.65;
+      color:#57504D;
+    }
+  </style>
+  <div class="container">
+    <div class="about-home-wrap">
+      <div class="about-home-heading">
+        <div class="eyebrow" data-bind="about.eyebrow"></div>
+        <h2 data-bind="about.heading"></h2>
+      </div>
+
+      <div class="about-home-description">
+        <p data-bind="about.body"></p>
+        <a class="button button-dark" data-bind="about.buttonText" href="about.html"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <style>
+    .what-home-top {
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 260px;
+      gap:70px;
+      align-items:center;
+      margin-bottom:75px;
+    }
+    .what-home-heading .eyebrow {
+      margin-bottom:18px;
+    }
+    .what-home-heading h2 {
+      margin:0 0 28px;
+      font-family:var(--serif);
+      font-size:clamp(58px,7.5vw,104px);
+      line-height:.88;
+      letter-spacing:-.055em;
+      font-weight:500;
+      max-width:800px;
+    }
+    .what-home-heading p {
+      margin:0;
+      max-width:850px;
+      font-size:clamp(18px,1.7vw,23px);
+      line-height:1.7;
+      color:rgba(247,243,236,.68);
+    }
+    .what-home-logo {
+      width:260px;
+      height:260px;
+      justify-self:end;
+      display:grid;
+      place-items:center;
+      padding:0;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+    }
+    .what-home-logo img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    @media (max-width:900px) {
+      .what-home-top {
+        grid-template-columns:1fr;
+        gap:38px;
+        align-items:start;
+        margin-bottom:60px;
+      }
+      .what-home-logo {
+        justify-self:start;
+        width:210px;
+        height:210px;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <div class="what-home-top">
+      <div class="what-home-heading">
+        <div class="eyebrow" data-bind="whatWeDo.eyebrow"></div>
+        <h2 data-bind="whatWeDo.heading"></h2>
+        <p data-bind="whatWeDo.body"></p>
+      </div>
+
+      <div class="what-home-logo">
+        <img src="images/praxis-logo-transparent.png" alt="Praxis logo">
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-image"><img src="images/what-we-do.jpg" alt="Praxis placeholder image"></div>
+      <div class="work-list">
+        <div class="work-item"><span class="number">01</span><h3>Research</h3><p>Investigate questions through student-led research.</p></div>
+        <div class="work-item"><span class="number">02</span><h3>Dialogue</h3><p>Create spaces for discussion, debate and exchange.</p></div>
+        <div class="work-item"><span class="number">03</span><h3>Publications</h3><p>Share ideas and research with a wider audience.</p></div>
+        <div class="work-item"><span class="number">04</span><h3>Engagement</h3><p>Connect students and ideas with the world around them.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <style>
+    .why-praxis-grid {
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(420px, 1fr);
+      gap:90px;
+      align-items:start;
+    }
+    .why-praxis-left {
+      max-width:720px;
+    }
+    .why-praxis-left .eyebrow {
+      margin-bottom:18px;
+    }
+    .why-praxis-title {
+      margin:0 0 24px;
+      font-family:var(--serif);
+      font-size:clamp(52px,6vw,86px);
+      line-height:.93;
+      letter-spacing:-.055em;
+      font-weight:500;
+      max-width:760px;
+    }
+    .why-praxis-heading {
+      margin:0 0 28px;
+      font-family:var(--mono);
+      font-size:clamp(13px,1.2vw,17px);
+      line-height:1.4;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:500;
+      max-width:700px;
+    }
+    .why-praxis-description {
+      margin:0;
+      max-width:680px;
+      font-size:clamp(18px,1.6vw,22px);
+      line-height:1.7;
+      color:#57504D;
+    }
+    .why-praxis-items {
+      margin-top:0;
+    }
+    @media (max-width:900px) {
+      .why-praxis-grid {
+        grid-template-columns:1fr;
+        gap:55px;
+      }
+      .why-praxis-left {
+        max-width:800px;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <div class="why-praxis-grid">
+      <div class="why-praxis-left">
+        <div class="eyebrow" data-bind="whyJoin.eyebrow"></div>
+        <div class="why-praxis-title">Why Join Praxis?</div>
+        <div class="why-praxis-heading" data-bind="whyJoin.heading"></div>
+        <p class="why-praxis-description" data-bind="whyJoin.body"></p>
+      </div>
+
+      <div class="join-items why-praxis-items">
+        <div class="join-item"><p>Work on meaningful, student-led research.</p></div>
+        <div class="join-item"><p>Build research, writing and communication skills.</p></div>
+        <div class="join-item"><p>Meet people who are curious about the same questions.</p></div>
+        <div class="join-item"><p>Turn ideas into conversations, projects and impact.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-maroon">
+  <style>
+    .ec-home-header {
+      display:block;
+      margin-bottom:70px;
+    }
+    .ec-home-header .eyebrow {
+      margin-bottom:18px;
+    }
+    .ec-home-header h2 {
+      margin:0 0 20px;
+      text-align:left;
+      font-family:var(--serif);
+      font-size:clamp(48px,5.8vw,94px);
+      line-height:.92;
+      letter-spacing:-.055em;
+      font-weight:500;
+      white-space:nowrap;
+    }
+    .ec-home-header p {
+      margin:0;
+      text-align:left;
+      font-size:clamp(18px,1.7vw,23px);
+      line-height:1.5;
+      color:rgba(247,243,236,.68);
+    }
+    @media (max-width:900px) {
+      .ec-home-header h2 {
+        white-space:normal;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <div class="ec-home-header">
+      <div class="eyebrow" data-bind="foundingMembers.eyebrow"></div>
+      <h2 data-bind="foundingMembers.heading"></h2>
+      <p data-bind="foundingMembers.intro"></p>
+    </div>
+    <div class="founders" data-members="foundingMembers.members"></div>
+  </div>
+</section>
+
+<section class="section final-cta-home">
+  <style>
+    .final-cta-home {
+      background:#FFFFFF;
+      color:var(--ink);
+      overflow:hidden;
+    }
+    .final-cta-home .final-cta-grid {
+      display:grid;
+      grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);
+      gap:80px;
+      align-items:center;
+    }
+    .final-cta-home .eyebrow {
+      margin-bottom:20px;
+      color:var(--ink);
+    }
+    .final-cta-home h2 {
+      margin:0 0 30px;
+      max-width:900px;
+      font-family:var(--serif);
+      font-size:clamp(48px,6.2vw,92px);
+      line-height:.94;
+      letter-spacing:-.055em;
+      font-weight:500;
+    }
+    .final-cta-home p {
+      margin:0 0 34px;
+      max-width:760px;
+      font-size:clamp(18px,1.7vw,23px);
+      line-height:1.65;
+      color:#57504D;
+    }
+    .final-cta-home .final-cta-logo {
+      width:min(260px,100%);
+      aspect-ratio:1;
+      justify-self:end;
+      display:grid;
+      place-items:center;
+    }
+    .final-cta-home .final-cta-logo img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .final-cta-home .button-primary {
+      background:var(--maroon);
+      color:#f8f5f3;
+    }
+    @media (max-width:900px) {
+      .final-cta-home .final-cta-grid {
+        grid-template-columns:1fr;
+        gap:45px;
+      }
+      .final-cta-home .final-cta-logo {
+        justify-self:start;
+        width:180px;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <div class="final-cta-grid">
+      <div>
+        <div class="eyebrow">05 / GET INVOLVED</div>
+        <h2>Curious about the questions that shape our world?</h2>
+        <p>Join Praxis and become part of a community that researches, questions, and creates. Explore ideas, contribute to meaningful research, and meet people who are curious about understanding the world around them.</p>
+        <a class="button button-primary" href="register.html">Get Involved ↗</a>
+      </div>
+
+      <div class="final-cta-logo">
+        <img src="images/praxis-logo-transparent.png" alt="Praxis logo">
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer class="site-footer praxis-footer">
+  <style>
+    .praxis-footer {
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Large PRAXIS watermark centered behind the entire footer */
+    .praxis-footer .footer-bg-word {
+      position:absolute;
+      left:50%;
+      top:52%;
+      transform:translate(-50%,-50%);
+      z-index:0;
+      font-family:var(--serif);
+      font-size:clamp(180px,24vw,430px);
+      line-height:.72;
+      letter-spacing:-.07em;
+      font-weight:500;
+      color:rgba(247,243,236,.055);
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+    }
+
+    .praxis-footer .container {
+      position:relative;
+      z-index:2;
+    }
+
+    .praxis-footer .footer-brand-row {
+      display:flex;
+      align-items:center;
+      gap:13px;
+      margin-bottom:22px;
+    }
+
+    /* Same JPG logo as the navbar, displayed as a circular mark */
+    .praxis-footer .footer-logo {
+      width:52px;
+      height:52px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:50%;
+      display:block;
+      flex:0 0 auto;
+    }
+
+    .praxis-footer .footer-brand {
+      margin:0;
+    }
+
+    /* Larger contrasting section headings */
+    .praxis-footer .footer-heading {
+      margin-bottom:24px;
+      font-family:var(--mono);
+      font-size:16px;
+      line-height:1.2;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:#E8A6AF;
+    }
+
+    .praxis-footer .footer-join-copy {
+      margin:0 0 22px;
+      max-width:300px;
+      font-family:var(--serif);
+      font-size:clamp(25px,2.3vw,36px);
+      line-height:1.02;
+      letter-spacing:-.035em;
+      font-weight:500;
+    }
+
+    .praxis-footer .footer-join-text {
+      margin:0 0 24px;
+      max-width:310px;
+      color:rgba(247,243,236,.68);
+      line-height:1.5;
+    }
+
+    /* Larger white Get Involved button */
+    .praxis-footer .footer-join-button {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:16px 25px;
+      border-radius:999px;
+      background:#FFFFFF;
+      color:var(--ink);
+      font-family:var(--mono);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:transform .2s ease;
+    }
+
+    .praxis-footer .footer-join-button:hover {
+      transform:translateY(-2px);
+    }
+
+    @media (max-width:700px) {
+      .praxis-footer .footer-bg-word {
+        left:50%;
+        top:65%;
+        transform:translate(-50%,-50%);
+        font-size:180px;
+      }
+
+      .praxis-footer .footer-join-copy,
+      .praxis-footer .footer-join-text {
+        max-width:none;
+      }
+    }
+  </style>
+
+  <div class="footer-bg-word" aria-hidden="true">PRAXIS</div>
+
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-logo" src="images/praxis-logo.jpg" alt="Praxis logo">
+          <div class="footer-brand">PRAXIS</div>
+        </div>
+        <p class="footer-tag">The Praxis Initiative <br>Lahore University of Management Sciences</p>
+      </div>
+
+      <div>
+        <div class="footer-heading">Explore</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="research.html">Research</a>
+          <a href="events.html">Events</a>
+          <a href="team.html">Team</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Connect</div>
+        <div class="footer-links">
+          <a href="#" data-footer-link="instagram" aria-label="Instagram">Instagram</a>
+          <a href="#" data-footer-link="linkedin" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" data-footer-link="email" aria-label="Email">Email</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Get Involved</div>
+        <p class="footer-join-copy">Do you want to join Praxis?</p>
+        <p class="footer-join-text">Explore ideas, contribute to research, and be part of the conversation.</p>
+        <a class="footer-join-button" href="register.html">Get Involved ↗</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 The Praxis Initiative, LUMS</span>
+      <span>Developed by <a class="developer-link" href="https://ahmadzeeshan.tech" target="_blank" rel="noopener noreferrer">Ahmad Zeeshan</a></span>
+    </div>
+  </div>
+</footer>
+<script src="data/site.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const footer = window.PRAXIS_CONTENT?.footer || {};
+
+    const links = {
+      instagram: footer.instagram,
+      linkedin: footer.linkedin,
+      email: footer.email
+    };
+
+    Object.entries(links).forEach(([key, value]) => {
+      const link = document.querySelector(`[data-footer-link="${key}"]`);
+      if (!link || !value) return;
+
+      let url = value.trim();
+
+      // Support values accidentally written as Markdown links:
+      // [https://example.com](https://example.com)
+      const markdownMatch = url.match(/\]\(([^)]+)\)/);
+      if (markdownMatch) url = markdownMatch[1];
+
+      if (key === "email") {
+        url = url.replace(/^mailto:/i, "");
+        link.href = `mailto:${url}`;
+      } else {
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const members = window.PRAXIS_CONTENT?.foundingMembers?.members || [];
+    const container = document.querySelector('[data-members="foundingMembers.members"]');
+
+    if (!container) return;
+
+    container.innerHTML = members.map(member => `
+      <article class="founder-card">
+        <img src="${member.image}" alt="${member.name}">
+        <div class="founder-meta">
+          <div class="founder-name">${member.name}</div>
+          <div class="founder-role">${member.role}</div>
+        </div>
+      </article>
+    `).join("");
+  });
+</script>
+
+<script src="js/main.js"></script>
+
+
+<!-- Responsive optimization only: preserves the finalized desktop design. -->
+<style id="home-responsive-optimization">
+  /* Tablet / intermediate widths */
+  @media (max-width:1100px) {
+    .hero-content,
+    .container { max-width:100%; }
+
+    .hero-content { padding-left:clamp(24px,4vw,48px); padding-right:clamp(24px,4vw,48px); }
+
+    .hero-copy { max-width:min(720px, 72vw); }
+    .hero-description { max-width:620px; }
+
+    .hero-counter { right:clamp(24px,4vw,48px); }
+
+    .work-grid {
+      grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+      gap:clamp(36px,5vw,70px);
+    }
+
+    .why-praxis-grid {
+      grid-template-columns:minmax(0,1fr) minmax(330px,.9fr);
+      gap:clamp(42px,6vw,70px);
+    }
+
+    .final-cta-home .final-cta-grid {
+      grid-template-columns:minmax(0,1.2fr) minmax(180px,.55fr);
+      gap:50px;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width:900px) {
+    .hero-content {
+      padding-top:clamp(100px,14vh,150px);
+      padding-bottom:clamp(90px,12vh,130px);
+    }
+
+    .hero-copy { max-width:760px; }
+
+    .hero-actions { flex-wrap:wrap; }
+
+    .announcement {
+      gap:18px;
+    }
+
+    .about-home-heading h2,
+    .what-home-heading h2 {
+      font-size:clamp(52px,8vw,78px);
+    }
+
+    .about-home-description {
+      margin-top:44px;
+    }
+
+    .work-grid {
+      grid-template-columns:1fr;
+    }
+
+    .work-image {
+      max-width:760px;
+    }
+
+    .work-list {
+      width:100%;
+    }
+
+    .why-praxis-grid {
+      grid-template-columns:1fr;
+      gap:55px;
+    }
+
+    .join-items {
+      width:100%;
+    }
+
+    .founders {
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .final-cta-home .final-cta-grid {
+      grid-template-columns:1fr;
+      gap:45px;
+    }
+
+    .final-cta-home .final-cta-logo {
+      justify-self:start;
+      width:180px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width:767px) {
+    .hero-content {
+      min-height:100svh;
+      padding:clamp(92px,15vh,125px) 22px 34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+    }
+
+    .hero-copy {
+      width:100%;
+      max-width:none;
+    }
+
+    .hero-eyebrow {
+      margin-bottom:14px;
+    }
+
+    .hero-copy h1,
+    .hero h1 {
+      max-width:100%;
+      font-size:clamp(48px,13vw,76px);
+      line-height:.92;
+      overflow-wrap:normal;
+      word-break:normal;
+    }
+
+    .hero-description {
+      max-width:34rem;
+      margin-top:20px;
+      font-size:16px;
+      line-height:1.55;
+    }
+
+    .hero-actions {
+      margin-top:24px;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .hero-actions .button,
+    .hero-actions .text-link {
+      min-height:46px;
+    }
+
+    .hero-counter {
+      position:relative;
+      right:auto;
+      bottom:auto;
+      margin-top:28px;
+      align-self:flex-start;
+    }
+
+    .hero-progress button {
+      min-width:28px;
+      min-height:28px;
+    }
+
+    .announcement {
+      display:grid;
+      grid-template-columns:auto 1fr;
+      align-items:start;
+      gap:12px 14px;
+      padding:18px 22px;
+    }
+
+    .announcement-copy {
+      min-width:0;
+    }
+
+    .announcement-label,
+    .announcement-text {
+      display:block;
+    }
+
+    .announcement-text {
+      margin-top:4px;
+      line-height:1.45;
+    }
+
+    .announcement .button {
+      grid-column:2;
+      justify-self:start;
+      min-height:44px;
+      white-space:nowrap;
+    }
+
+    .section {
+      padding-top:clamp(68px,11vw,92px);
+      padding-bottom:clamp(68px,11vw,92px);
+    }
+
+    .about-home-heading h2,
+    .what-home-heading h2 {
+      font-size:clamp(50px,14vw,72px);
+      line-height:.9;
+    }
+
+    .about-home-description {
+      margin-top:38px;
+      padding-top:24px;
+    }
+
+    .about-home-description p {
+      font-size:clamp(17px,4.7vw,20px);
+      line-height:1.6;
+    }
+
+    .what-home-top {
+      grid-template-columns:1fr;
+      gap:28px;
+      margin-bottom:48px;
+    }
+
+    .what-home-heading p {
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .what-home-logo {
+      width:150px;
+      height:150px;
+      justify-self:start;
+    }
+
+    .work-grid {
+      gap:38px;
+    }
+
+    .work-image {
+      width:100%;
+      max-width:none;
+    }
+
+    .work-image img {
+      width:100%;
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .work-list {
+      width:100%;
+    }
+
+    .work-item {
+      padding:22px 0;
+    }
+
+    .work-item h3 {
+      font-size:clamp(22px,6vw,30px);
+    }
+
+    .work-item p {
+      max-width:32rem;
+      line-height:1.55;
+    }
+
+    .why-praxis-grid {
+      grid-template-columns:1fr;
+      gap:42px;
+    }
+
+    .why-praxis-title {
+      font-size:clamp(48px,12.5vw,68px);
+      line-height:.92;
+    }
+
+    .why-praxis-heading {
+      font-size:12px;
+      line-height:1.5;
+      letter-spacing:.12em;
+    }
+
+    .why-praxis-description {
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .join-item p {
+      line-height:1.5;
+    }
+
+    .ec-home-header {
+      margin-bottom:44px;
+    }
+
+    .ec-home-header h2 {
+      font-size:clamp(46px,11.5vw,70px);
+      line-height:.94;
+      white-space:normal;
+      overflow-wrap:break-word;
+    }
+
+    .ec-home-header p {
+      font-size:17px;
+      line-height:1.5;
+    }
+
+    .founders {
+      grid-template-columns:1fr;
+      gap:28px;
+    }
+
+    .founder-card {
+      width:100%;
+    }
+
+    .founder-card img {
+      width:100%;
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .final-cta-home .final-cta-grid {
+      gap:38px;
+    }
+
+    .final-cta-home h2 {
+      font-size:clamp(46px,12vw,70px);
+      line-height:.94;
+    }
+
+    .final-cta-home p {
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .final-cta-home .final-cta-logo {
+      width:150px;
+      max-width:45vw;
+    }
+
+    /* Footer: preserve its design, only make the existing columns usable. */
+    .praxis-footer .footer-top {
+      grid-template-columns:1fr 1fr;
+      gap:42px 28px;
+    }
+
+    .praxis-footer .footer-brand-row {
+      margin-bottom:16px;
+    }
+
+    .praxis-footer .footer-logo {
+      width:44px;
+      height:44px;
+    }
+
+    .praxis-footer .footer-heading {
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .praxis-footer .footer-join-copy {
+      font-size:26px;
+    }
+
+    .praxis-footer .footer-join-button {
+      min-height:46px;
+      padding:14px 20px;
+    }
+
+    .praxis-footer .footer-bottom {
+      gap:12px;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width:480px) {
+    .hero-content {
+      padding-left:18px;
+      padding-right:18px;
+    }
+
+    .hero-copy h1,
+    .hero h1 {
+      font-size:clamp(46px,14.5vw,64px);
+    }
+
+    .hero-actions {
+      flex-direction:column;
+      align-items:stretch;
+      width:100%;
+    }
+
+    .hero-actions .button {
+      width:max-content;
+      max-width:100%;
+    }
+
+    .hero-actions .text-link {
+      width:max-content;
+    }
+
+    .announcement {
+      padding-left:18px;
+      padding-right:18px;
+    }
+
+    .about-home-heading h2,
+    .what-home-heading h2 {
+      font-size:clamp(46px,14vw,64px);
+    }
+
+    .what-home-logo {
+      width:125px;
+      height:125px;
+    }
+
+    .ec-home-header h2 {
+      font-size:clamp(44px,13vw,62px);
+    }
+
+    .praxis-footer .footer-top {
+      grid-template-columns:1fr;
+      gap:34px;
+    }
+
+    .praxis-footer .footer-bg-word {
+      font-size:150px;
+      top:68%;
+    }
+
+    .praxis-footer .footer-bottom {
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
+
+  @media (max-width:375px) {
+    .hero-content {
+      padding-left:16px;
+      padding-right:16px;
+    }
+
+    .hero-copy h1,
+    .hero h1 {
+      font-size:46px;
+    }
+
+    .section {
+      padding-top:62px;
+      padding-bottom:62px;
+    }
+
+    .about-home-heading h2,
+    .what-home-heading h2 {
+      font-size:44px;
+    }
+
+    .why-praxis-title,
+    .final-cta-home h2 {
+      font-size:44px;
+    }
+
+    .ec-home-header h2 {
+      font-size:42px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orbit,
+    .hero-glow,
+    * {
+      scroll-behavior:auto !important;
+      transition-duration:.01ms !important;
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+    }
+  }
+</style>
+
+</body>
+</html>
