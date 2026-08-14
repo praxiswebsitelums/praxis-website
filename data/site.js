@@ -64,34 +64,121 @@ window.PRAXIS_CONTENT = {
     body: "Praxis turns questions into research and research into action. We investigate real-world issues through primary and meta-research, amplify perspectives that are often overlooked, and create spaces for meaningful dialogue. Through our research, publications, and engagement, we work to make knowledge actionable and drive meaningful change.",
     image: "images/what-we-do.jpg",
     items: [
-      { number: "01", title: "Research", body: "Investigate questions through student-led research." },
-      { number: "02", title: "Dialogue", body: "Create spaces for discussion, debate and exchange." },
-      { number: "03", title: "Publications", body: "Share ideas and research with a wider audience." },
-      { number: "04", title: "Engagement", body: "Connect students and ideas with the world around them." }
+      {
+        number: "01",
+        title: "Research",
+        body: "Investigate questions through student-led research."
+      },
+      {
+        number: "02",
+        title: "Dialogue",
+        body: "Create spaces for discussion, debate and exchange."
+      },
+      {
+        number: "03",
+        title: "Publications",
+        body: "Share ideas and research with a wider audience."
+      },
+      {
+        number: "04",
+        title: "Engagement",
+        body: "Connect students and ideas with the world around them."
+      }
     ]
   },
 
   whyJoin: {
-  eyebrow: "03 / WHY PRAXIS",
-  title: "Why Join Praxis?",
-  heading: "Come with questions. Leave with perspective.",
-  body: "Praxis is a space to explore questions that matter, work alongside curious people, and turn ideas into meaningful work. Whether you're interested in research, writing, discussion, or simply understanding the world around you better, Praxis gives you the opportunity to learn, contribute, and grow.",
-  items: [
-    "Work on meaningful, student-led research.",
-    "Build research, writing and communication skills.",
-    "Meet people who are curious about the same questions.",
-    "Turn ideas into conversations, projects and impact."
-  ]
-},
+    eyebrow: "03 / WHY PRAXIS",
+    title: "Why Join Praxis?",
+    heading: "Come with questions. Leave with perspective.",
+    body: "Praxis is a space to explore questions that matter, work alongside curious people, and turn ideas into meaningful work. Whether you're interested in research, writing, discussion, or simply understanding the world around you better, Praxis gives you the opportunity to learn, contribute, and grow.",
+    items: [
+      "Work on meaningful, student-led research.",
+      "Build research, writing and communication skills.",
+      "Meet people who are curious about the same questions.",
+      "Turn ideas into conversations, projects and impact."
+    ]
+  },
 
   ec: {
     eyebrow: "04 / EC",
     heading: "Executive Council 26-27",
     intro: "The people who lead Praxis.",
     members: [
-      { name: "Zawar Hussain", role: "President", image: "images/team-01.jpg" },
-      { name: "Maryam Zulfiqar", role: "General Secretary", image: "images/team-02.jpg" },
-      { name: "Sameen Jahangir", role: "Treasurer", image: "images/team-03.jpg" }
+      {
+        name: "Zawar Hussain",
+        role: "President",
+        image: "images/team-01.jpg"
+      },
+      {
+        name: "Maryam Zulfiqar",
+        role: "General Secretary",
+        image: "images/team-02.jpg"
+      },
+      {
+        name: "Sameen Jahangir",
+        role: "Treasurer",
+        image: "images/team-03.jpg"
+      }
+    ]
+  },
+
+  /* =========================================
+     RESEARCH — powers research.html
+     ========================================= */
+
+  research: {
+    eyebrow: "01 / OUR RESEARCH",
+    heading: "Research that asks something of us.",
+    intro: "Explore the questions Praxis has investigated. Each project begins with a question, develops through research, and ends by opening the door to further conversation.",
+
+    projects: [
+      {
+        id: "research-01",
+        number: "01",
+        semester: "FALL 2025",
+        title: "NOP Students’ Experiences in LUMS Student Societies",
+        shortDescription: "An investigation into how information gaps, class-coded interviews, language, unequal extracurricular exposure, and informal networks shape NOP students’ access to participation and leadership in LUMS societies.",
+        image: "images/research-01.jpg",
+        fullDescription: `
+        Praxis Initiative examined the experiences of National Outreach Programme (NOP) students within LUMS’s co-curricular societies, focusing on recruitment, participation, progression, and access to leadership.
+        
+        The research was grounded in primary, student-informed research involving approximately 40 NOP students across different batches, majors, provinces, and schooling backgrounds. Through in-depth interviews and focus-group discussions, Praxis documented students’ experiences of applying to societies, navigating interviews, performing within societies, seeking promotions, and accessing leadership positions. 
+        
+        The research identified several recurring structural barriers. Students reported limited information about available societies and recruitment processes, particularly in their first year. Interviews were frequently experienced as intimidating and were perceived to reward English fluency, accent, social confidence, familiarity with elite cultural norms, and prior extracurricular exposure rather than motivation or potential. 
+        
+        Participants also described how dressing, accent, perceived socioeconomic background, social circles, and “fit” could influence how applicants were evaluated. At later stages, visibility, networking, and participation in social circles were reported to influence promotions, while NOP students remained underrepresented in directorates and executive councils despite substantial contributions. 
+        
+        A further concern was stigma surrounding NOP identity. Students described discomfort disclosing their status because of stereotyping, pity, tokenization, and comments about scholarship recipients. This made confidentiality particularly important when designing reforms. 
+        
+        The research culminated in a policy paper proposing reforms across membership, directorate, and executive-council levels, including standardized interview criteria, removal of experience-based hypothetical questions, diversity benchmarks, neutral observers, documented performance-based EC selection, interviewer training, confidential NOP identification, and interview-preparation programmes.
+        
+        You can Download the full Report here:`,
+        pdf: "research/NOP-research-paper.pdf"
+      },
+      {
+        id: "research-02",
+        number: "02",
+        semester: "SPRING 2026",
+        title: "Gender and Institutional Precarity Among MBM Workers at LUMS",
+        shortDescription: "A study of MBM workers’ employment conditions at LUMS, examining job insecurity, pay, complaints, welfare, mobility, and the gendered burdens experienced by female workers.",
+        image: "images/research-02.jpg",
+        fullDescription: `
+        Praxis Initiative investigated the working conditions and institutional experiences of Maintenance, Building and Management (MBM) workers at LUMS through a gender and institutional lens.
+        
+        The research was based on 28 structured interviews with MBM workers: 20 women and 8 men. Interviews covered commuting and travel, workload and working hours, physical environment and rest spaces, pay and economic survival, treatment and dignity, institutional support, complaint mechanisms, work-family balance, training, and promotion. 
+        
+        The research analyzed the experiences of workers through two complementary lenses. The institutional lens examined how subcontracting, pay structures, complaint mechanisms, and training and promotion pathways shaped workers’ experiences. The gender lens examined the additional burdens reported by women, including unpaid domestic labour, commute-related safety concerns, lack of appropriate rest infrastructure, and family constraints surrounding employment. 
+        
+        Across the workforce, Praxis found recurring concerns around job insecurity, flat pay regardless of tenure, weak complaint mechanisms, limited training and promotion opportunities, inadequate long-term medical support, lack of retirement benefits, and the absence of dedicated rest spaces. Workers also reported undertaking additional duties without overtime pay. 
+        
+        The gender dimension revealed an additional layer of inequality. Female workers described combining paid employment with a “second shift” of cooking, cleaning, and childcare at home. They also reported particularly difficult and unsafe commutes, often beginning before dawn, and a lack of appropriate spaces to rest on campus. 
+        
+        A major finding concerned mobility and safety rather than simply commute length. Female workers described travelling alone during early morning hours, sometimes leaving home at 4–5 a.m., while national research cited in the paper identifies harassment as a significant barrier to women’s use of public transport. Praxis therefore frames safe mobility as an institutional and gender-equity issue. 
+        
+        The research culminated in recommendations covering employment security, institutional accountability, health and welfare, transport, rest infrastructure, gender-responsive facilities, complaint mechanisms, and institutional oversight. Proposed measures include pathways toward permanent employment, tenure-linked pay, confidential complaints channels, transport support, dedicated rest areas, paid overtime, and safer transport arrangements for female workers.`,
+        pdf: null
+      },
     ]
   },
 
