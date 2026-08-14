@@ -84,7 +84,7 @@ window.PRAXIS_CONTENT = {
   ]
 },
 
-  foundingMembers: {
+  ec: {
     eyebrow: "04 / EC",
     heading: "Executive Council 26-27",
     intro: "The people who lead Praxis.",
