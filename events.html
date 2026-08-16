@@ -1,12 +1,20 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Events — Praxis</title><link rel="stylesheet" href="css/styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Events | Praxis Initiative at LUMS — a visual archive of talks, discussions and activities.">
+  <title>Events | Praxis</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/events.css">
+</head>
 <body>
+
 <header class="site-header">
   <nav class="navbar">
     <a class="brand" href="index.html" aria-label="Praxis home">
-      <img src="images/praxis-logo.jpg" alt="Praxis logo">
+      <img src="images/logo.jpg" alt="Praxis logo">
       <span class="brand-word">PRAXIS</span>
     </a>
     <div class="nav-links">
@@ -17,19 +25,37 @@
   </nav>
   <div class="mobile-menu"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="research.html">Research</a><a class="active" href="events.html">Events</a><a class="" href="team.html">Team</a><a href="register.html">Get Involved ↗</a></div>
 </header>
-<main>
-<section class="page-hero"><div class="container"><div class="eyebrow">03 / EVENTS</div><h1>Events</h1></div></section>
-<section class="page-content"><div class="container content-grid">
-<div><h2>Events</h2></div><div><div class="list-cards"><div class="content-card"><h3>Praxis Event</h3><p>Placeholder event entry. Event gallery and individual event pages will be expanded as official photographs and information become available.</p></div><div class="content-card"><h3>More events</h3><p>Use this area for the society’s past and upcoming activities.</p></div></div></div>
-</div></section>
+
+<main class="ab3 events-page">
+
+<!-- ============================= EVENTS GALLERY ============================= -->
+<section class="events-gallery on-light">
+  <div class="wrap">
+    <div class="eyebrow rv" data-events-eyebrow>Eyebrow</div>
+    <h1 class="mask"><span data-events-heading>Heading</span></h1>
+    <p class="events-intro rv d1" data-events-intro>Description</p>
+
+    <!-- Cards are rendered entirely by js/events.js from data/site.js -->
+    <div class="events-grid" data-events-grid></div>
+  </div>
+</section>
+
 </main>
-<footer class="site-footer">
+
+
+<footer class="site-footer praxis-footer">
+<div class="footer-bg-word" aria-hidden="true">PRAXIS</div>
+
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">PRAXIS</div>
-        <p class="footer-tag">The Praxis Initiative · Lahore University of Management Sciences</p>
+        <div class="footer-brand-row">
+          <img class="footer-logo" src="images/logo.jpg" alt="Praxis logo">
+          <div class="footer-brand">PRAXIS</div>
+        </div>
+        <p class="footer-tag">The Praxis Initiative <br>Lahore University of Management Sciences</p>
       </div>
+
       <div>
         <div class="footer-heading">Explore</div>
         <div class="footer-links">
@@ -39,24 +65,32 @@
           <a href="team.html">Team</a>
         </div>
       </div>
+
       <div>
         <div class="footer-heading">Connect</div>
         <div class="footer-links">
-          <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="mailto:praxis@lums.edu.pk">Email</a>
+          <a href="#" data-footer-link="instagram" aria-label="Instagram">Instagram</a>
+          <a href="#" data-footer-link="linkedin" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" data-footer-link="email" aria-label="Email">Email</a>
         </div>
       </div>
+
       <div>
         <div class="footer-heading">Get Involved</div>
-        <div class="footer-links">
-          <a href="register.html">Register your interest →</a>
-        </div>
+        <p class="footer-join-copy">Do you want to join Praxis?</p>
+        <p class="footer-join-text">Explore ideas, contribute to research, and be part of the conversation.</p>
+        <a class="footer-join-button" href="register.html">Get Involved ↗</a>
       </div>
     </div>
+
     <div class="footer-bottom">
       <span>© 2026 The Praxis Initiative, LUMS</span>
       <span>Developed by <a class="developer-link" href="https://ahmadzeeshan.tech" target="_blank" rel="noopener noreferrer">Ahmad Zeeshan</a></span>
     </div>
   </div>
-</footer><script src="data/site.js"></script><script src="js/main.js"></script></body></html>
+</footer>
+<script src="data/site.js"></script>
+<script src="js/main.js"></script>
+<script src="js/events.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+/* =====================================================================
+   EVENTS PAGE — page-specific styles
+
+   The shared editorial system (.ab3, .wrap, .eyebrow, .rv, .mask,
+   on-light, etc.) already lives in css/styles.css and is reused as-is
+   on this page. Only the Events-only pieces live here: the page
+   heading/intro sizing and the maroon-glass alternating event cards.
+   ===================================================================== */
+
+
+/* ---- page heading (this page's own h1, sized here since no
+   section-specific h1 rule exists globally for it) ---- */
+.events-gallery h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  margin: 0 0 28px;
+}
+
+
+.events-intro {
+  max-width: 640px;
+  font-size: clamp(16.5px, 1.4vw, 19px);
+  margin: 0 0 64px;
+}
+
+
+/* =====================================================================
+   EVENT GRID / CARDS
+   ===================================================================== */
+
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3vw, 44px);
+}
+
+
+/* ---- event card: deep maroon smoked glass on the cream page ---- */
+.event-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(26px, 3vw, 40px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(
+    155deg,
+    rgba(122, 31, 43, 0.94) 0%,
+    rgba(74, 17, 25, 0.97) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(247, 243, 236, 0.14);
+  box-shadow:
+    0 30px 70px -34px rgba(74, 17, 25, 0.55),
+    inset 0 1px 0 rgba(247, 243, 236, 0.1);
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    transform 0.5s cubic-bezier(0.19, 0.78, 0.24, 1),
+    box-shadow 0.5s ease,
+    opacity 0.8s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+
+/* soft inner highlight / subtle reflection along the top edge */
+.event-card::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 243, 236, 0.07),
+    transparent
+  );
+  pointer-events: none;
+}
+
+
+/* fallback for browsers without backdrop-filter support — stays
+   premium without relying on blur */
+@supports not (
+  (backdrop-filter: blur(1px)) or
+  (-webkit-backdrop-filter: blur(1px))
+) {
+  .event-card {
+    background: linear-gradient(
+      155deg,
+      rgba(122, 31, 43, 0.97) 0%,
+      rgba(58, 14, 20, 0.99) 100%
+    );
+  }
+}
+
+
+.event-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.event-card.reverse {
+  grid-template-columns: 1fr 44%;
+}
+
+
+.event-card.reverse .event-card-media {
+  order: 2;
+}
+
+
+.event-card.reverse .event-card-body {
+  order: 1;
+}
+
+
+/* hover / focus elevation — declared after .in so it wins at equal specificity */
+.event-card:hover,
+.event-card:focus-within {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow:
+    0 40px 90px -34px rgba(74, 17, 25, 0.65),
+    inset 0 1px 0 rgba(247, 243, 236, 0.14);
+}
+
+
+.event-card-media {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+
+.event-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+
+.event-card:hover .event-card-media img,
+.event-card:focus-within .event-card-media img {
+  transform: scale(1.05);
+}
+
+
+.event-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =====================================================================
+   CARD TEXT
+   All event-card text is intentionally pure white.
+   ===================================================================== */
+
+.event-card .event-card-date {
+  font: 500 11px var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+
+.event-card .event-card-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 38px);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin: 0 0 14px;
+  color: #ffffff;
+}
+
+
+.event-card .event-card-desc {
+  font-size: 15.5px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0;
+  color: #ffffff;
+}
+
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+
+
+/* laptop / small desktop — keep the horizontal layout, tighten up */
+@media (max-width: 1100px) {
+  .event-card {
+    grid-template-columns: 42% 1fr;
+    gap: clamp(22px, 3vw, 40px);
+    padding: clamp(20px, 2.4vw, 30px);
+  }
+
+  .event-card.reverse {
+    grid-template-columns: 1fr 42%;
+  }
+}
+
+
+/* mobile — single column, image always first regardless of alternation */
+@media (max-width: 700px) {
+  .event-card,
+  .event-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .event-card.reverse .event-card-media,
+  .event-card.reverse .event-card-body {
+    order: initial;
+  }
+
+  .event-card-desc {
+    max-width: none;
+  }
+}
+
+
+/* =====================================================================
+   REDUCED MOTION
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+
+  .event-card:hover,
+  .event-card:focus-within {
+    transform: none !important;
+    box-shadow:
+      0 30px 70px -34px rgba(74, 17, 25, 0.55),
+      inset 0 1px 0 rgba(247, 243, 236, 0.1) !important;
+  }
+
+  .event-card-media img {
+    transition: none !important;
+  }
+
+  .event-card:hover .event-card-media img,
+  .event-card:focus-within .event-card-media img {
+    transform: none !important;
+  }
+}

@@ -182,6 +182,53 @@ window.PRAXIS_CONTENT = {
     ]
   },
 
+
+    events: {
+    eyebrow: "01 / EVENTS",
+    heading: "Ideas in motion.",
+    intro: "Below are some of the conversations, talks, and activities that have shaped the Praxis community.",
+
+    items: [
+      {
+        id: "event-05",
+        date: "APRIL 2026",
+        title: "All-Societies Conference",
+        shortDescription: "Praxis presented its research based on 40 interviews with NOP students and screened a documentary produced by Praxis, followed by open deliberations on making LUMS societies more inclusive and meritocratic.",
+        image: "images/event-05.jpg"
+      },
+      {
+        id: "event-04",
+        date: "FEBRUARY 2026",
+        title: "Second General Body Meeting",
+        shortDescription: "Praxis Initiative’s second General Body meeting brought members together through fun games and activities, welcomed new members, and opened discussions on potential research topics for the Spring semester.",
+        image: "images/event-04.jpg"
+      },
+      {
+        id: "event-03",
+        date: "NOVEMBER 2025",
+        title: "Researching Vulnerability and Resilience: Narratives Through Film",
+        shortDescription: "Praxis screened “Shadow of Fear” on military operations in Waziristan and “The Road That Never Ends” on enforced disappearances, followed by a panel with Amina Masood, Aisha Masood, Jamil Iqbal, and Nida Kirmani. Praxis explored the human cost of conflict and enforced disappearances, fostering empathy, critical reflection, and dialogue on justice, memory, and recovery.",
+        image: "images/event-03.jpg"
+      },
+      {
+        id: "event-02",
+        date: "OCTOBER 2025",
+        title: "Praxis Research Methodology Workshop",
+        shortDescription: "Praxis Initiative’s inaugural workshop, led by Professor Rabia Kamal, equipped students with practical field research skills, reliable data collection methods, and approaches to translating research into policy impact.",
+        image: "images/event-02.jpg"
+      },
+      {
+        id: "event-01",
+        date: "OCTOBER 2025",
+        title: "First General Body Meeting",
+        shortDescription: "Praxis Initiative’s first General Body meeting brought members together to get acquainted, understand each department’s purpose and responsibilities, and collectively discuss potential research topics for the Fall semester.",
+        image: "images/event-01.jpg"
+      }
+    ]
+  },
+
+
+
   footer: {
     developerName: "Ahmad Zeeshan",
     developerUrl: "https://ahmadzeeshan.tech",

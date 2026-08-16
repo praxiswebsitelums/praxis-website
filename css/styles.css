@@ -1183,9 +1183,9 @@ img { display: block; max-width: 100%; }
 /* =====================================================================
    05 — FOUNDING PRAXIS (maroon)
    ===================================================================== */
-.ab3-founding-head{ max-width:760px; margin-bottom:80px; }
+.ab3-founding-head{  margin-bottom:80px; }
 .ab3-founding-head h2{ font-size:clamp(40px,6vw,92px); margin-bottom:22px; }
-.ab3-founding-head p{ max-width:600px; font-size:clamp(16.5px,1.4vw,19px); }
+.ab3-founding-head p{ font-size:clamp(16.5px,1.4vw,19px); }
 .ab3-founder{ display:grid; grid-template-columns:.85fr 1.15fr; gap:var(--gut); align-items:center; padding:60px 0; border-top:1px solid var(--line-on-maroon); }
 .ab3-founder:first-of-type{ border-top:1px solid var(--line-on-maroon); }
 .ab3-founder.reverse{ grid-template-columns:1.15fr .85fr; }
