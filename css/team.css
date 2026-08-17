@@ -1,0 +1,341 @@
+/* =====================================================================
+   TEAM PAGE — page-specific styles
+
+   The shared editorial system (.ab3, .wrap, .eyebrow, .rv, .mask, etc.)
+   already lives in css/styles.css and is reused as-is. This file adds
+   only what's unique to Team: the single sticky GB photograph behind
+   alternating transparent/cream sections, the hero, the EC grid, and
+   the director / assistant-director person cards.
+
+   COLOR NOTE: the site's cream/ivory tone is var(--ivory) — there is
+   no --cream variable defined anywhere in the project, so cream
+   sections below use var(--ivory) directly.
+   ===================================================================== */
+
+
+/* =====================================================================
+   BACKGROUND SYSTEM — the one GB photograph
+   ===================================================================== */
+
+/* The photo path is applied once, at runtime, by js/team.js as
+   --team-bg on the document root — team.css never hardcodes the path,
+   so changing images/team-gb.jpg in data/team.js is the only edit
+   ever required to swap the photograph. */
+
+.team-page .team-photo-section {
+  position: relative;
+  background-image: var(--team-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--ink);
+  color: var(--ivory);
+}
+
+/* Desktop/laptop: pin the photograph to the viewport so every
+   transparent section reveals the same continuous image. */
+@media (min-width: 901px) {
+  .team-page .team-photo-section {
+    background-attachment: fixed;
+  }
+}
+
+/* Readability overlay — kept translucent so the photograph stays
+   clearly visible underneath. */
+.team-page .team-photo-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 12, 12, 0.46) 0%,
+    rgba(13, 12, 12, 0.6) 60%,
+    rgba(13, 12, 12, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+.team-page .team-photo-section .eyebrow { color: var(--rose); }
+.team-page .team-photo-section h1,
+.team-page .team-photo-section h2 { color: var(--ivory); }
+.team-page .team-photo-section p { color: rgba(247, 243, 236, 0.8); }
+
+.team-page .team-cream-section {
+  background: var(--ivory);
+  color: var(--ink);
+}
+.team-page .team-cream-section .eyebrow { color: var(--maroon); }
+
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+
+.team-page .team-hero {
+  min-height: clamp(560px, 82vh, 880px);
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--pad-y) + 30px);
+  padding-bottom: clamp(56px, 8vw, 100px);
+}
+
+.team-page .team-hero .wrap { position: relative; z-index: 2; }
+
+.team-page .team-hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  margin: 18px 0 26px;
+  max-width: 920px;
+}
+
+.team-page .team-hero-desc {
+  max-width: 620px;
+  font-size: clamp(16.5px, 1.4vw, 19px);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* =====================================================================
+   EXECUTIVE COUNCIL
+   ===================================================================== */
+
+.team-page .team-ec h2 {
+  font-size: clamp(40px, 5.6vw, 76px);
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.team-page .team-ec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2vw, 26px);
+}
+
+@media (max-width: 900px) {
+  .team-page .team-ec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* three members on a 2-column grid: centre the leftover card */
+  .team-page .team-ec-grid > *:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 9px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .team-page .team-ec-grid { grid-template-columns: 1fr; gap: 24px; }
+  .team-page .team-ec-grid > *:nth-child(3):last-child {
+    max-width: 420px;
+  }
+}
+
+
+/* =====================================================================
+   DEPARTMENTS
+   ===================================================================== */
+
+.team-page .team-department h2 {
+  font-size: clamp(32px, 4.2vw, 54px);
+  margin-bottom: clamp(44px, 5.6vw, 70px);
+}
+
+.team-page .team-person-row {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.6vw, 32px);
+}
+
+/* the assistant-director row gets its own separation from directors */
+.team-page .team-ad-row {
+  margin-top: clamp(28px, 3.6vw, 48px);
+}
+
+.team-page .team-person-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(20px, 2.6vw, 32px);
+}
+
+
+/* =====================================================================
+   PERSON CARDS
+   (shared visual language with the Home EC cards: rounded, cropped
+   portrait, name + role on a dark glass panel over the photo)
+   ===================================================================== */
+
+.team-page .team-card {
+  position: relative;
+  flex: 0 0 clamp(230px, 22vw, 300px);
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--rose);
+  box-shadow: 0 20px 50px -28px rgba(13, 12, 12, 0.5);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s cubic-bezier(0.19, 0.78, 0.24, 1),
+    transform 0.5s cubic-bezier(0.19, 0.78, 0.24, 1),
+    box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.team-page .team-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-page .team-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+/* subtle highlight along the top edge — premium, not glossy */
+.team-page .team-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.16), transparent 42%);
+  pointer-events: none;
+}
+
+.team-page .team-card:hover,
+.team-page .team-card:focus-within {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 30px 64px -26px rgba(74, 17, 25, 0.55);
+}
+
+.team-page .team-card:hover img,
+.team-page .team-card:focus-within img {
+  transform: scale(1.045);
+}
+
+.team-page .team-card-meta {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 14px 16px;
+  background: rgba(13, 12, 12, 0.72);
+  color: var(--ivory);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.team-page .team-card-name {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.15;
+}
+
+.team-page .team-card-role {
+  margin-top: 4px;
+  font: 10px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+@media (max-width: 640px) {
+  .team-page .team-card { flex: 0 0 100%; max-width: 420px; }
+}
+
+
+/* =====================================================================
+   DEPARTMENT GROUP PHOTO
+   ===================================================================== */
+
+.team-page .team-group-photo {
+  position: relative;
+  margin-top: clamp(48px, 5.6vw, 80px);
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 30px 70px -32px rgba(13, 12, 12, 0.55);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.19, 0.78, 0.24, 1),
+    transform 0.8s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+.team-page .team-group-photo.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-page .team-group-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-page .team-group-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 40%);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .team-page .team-group-photo { aspect-ratio: 4 / 3; }
+}
+
+
+/* =====================================================================
+   RESPONSIVE — HERO
+   ===================================================================== */
+
+@media (max-width: 900px) {
+  .team-page .team-hero {
+    min-height: clamp(480px, 74vh, 720px);
+    padding-top: calc(var(--pad-y) + 10px);
+  }
+}
+
+@media (max-width: 640px) {
+  .team-page .team-hero {
+    align-items: flex-end;
+    min-height: 78svh;
+  }
+}
+
+
+/* =====================================================================
+   REDUCED MOTION
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .team-page .team-card,
+  .team-page .team-group-photo {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+
+  .team-page .team-card:hover,
+  .team-page .team-card:focus-within {
+    transform: none !important;
+  }
+
+  .team-page .team-card img,
+  .team-page .team-card:hover img,
+  .team-page .team-card:focus-within img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

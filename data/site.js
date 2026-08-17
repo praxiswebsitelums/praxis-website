@@ -108,17 +108,17 @@ window.PRAXIS_CONTENT = {
       {
         name: "Zawar Hussain",
         role: "President",
-        image: "images/team-01.jpg"
+        image: "images/team/team-01.jpg"
       },
       {
         name: "Maryam Zulfiqar",
         role: "General Secretary",
-        image: "images/team-02.jpg"
+        image: "images/team/team-02.jpg"
       },
       {
         name: "Sameen Jahangir",
         role: "Treasurer",
-        image: "images/team-03.jpg"
+        image: "images/team/team-03.jpg"
       }
     ]
   },
@@ -139,7 +139,7 @@ window.PRAXIS_CONTENT = {
         semester: "FALL 2025",
         title: "NOP Students’ Experiences in LUMS Student Societies",
         shortDescription: "An investigation into how information gaps, class-coded interviews, language, unequal extracurricular exposure, and informal networks shape NOP students’ access to participation and leadership in LUMS societies.",
-        image: "images/research-01.jpg",
+        image: "images/research/research-01.jpg",
         fullDescription: `
         Praxis Initiative examined the experiences of National Outreach Programme (NOP) students within LUMS’s co-curricular societies, focusing on recruitment, participation, progression, and access to leadership.
         
@@ -162,7 +162,7 @@ window.PRAXIS_CONTENT = {
         semester: "SPRING 2026",
         title: "Gender and Institutional Precarity Among MBM Workers at LUMS",
         shortDescription: "A study of MBM workers’ employment conditions at LUMS, examining job insecurity, pay, complaints, welfare, mobility, and the gendered burdens experienced by female workers.",
-        image: "images/research-02.jpg",
+        image: "images/research/research-02.jpg",
         fullDescription: `
         Praxis Initiative investigated the working conditions and institutional experiences of Maintenance, Building and Management (MBM) workers at LUMS through a gender and institutional lens.
         
@@ -194,35 +194,35 @@ window.PRAXIS_CONTENT = {
         date: "APRIL 2026",
         title: "All-Societies Conference",
         shortDescription: "Praxis presented its research based on 40 interviews with NOP students and screened a documentary produced by Praxis, followed by open deliberations on making LUMS societies more inclusive and meritocratic.",
-        image: "images/event-05.jpg"
+        image: "images/event/event-05.jpg"
       },
       {
         id: "event-04",
         date: "FEBRUARY 2026",
         title: "Second General Body Meeting",
         shortDescription: "Praxis Initiative’s second General Body meeting brought members together through fun games and activities, welcomed new members, and opened discussions on potential research topics for the Spring semester.",
-        image: "images/event-04.jpg"
+        image: "images/event/event-04.jpg"
       },
       {
         id: "event-03",
         date: "NOVEMBER 2025",
         title: "Researching Vulnerability and Resilience: Narratives Through Film",
         shortDescription: "Praxis screened “Shadow of Fear” on military operations in Waziristan and “The Road That Never Ends” on enforced disappearances, followed by a panel with Amina Masood, Aisha Masood, Jamil Iqbal, and Nida Kirmani. Praxis explored the human cost of conflict and enforced disappearances, fostering empathy, critical reflection, and dialogue on justice, memory, and recovery.",
-        image: "images/event-03.jpg"
+        image: "images/event/event-03.jpg"
       },
       {
         id: "event-02",
         date: "OCTOBER 2025",
         title: "Praxis Research Methodology Workshop",
         shortDescription: "Praxis Initiative’s inaugural workshop, led by Professor Rabia Kamal, equipped students with practical field research skills, reliable data collection methods, and approaches to translating research into policy impact.",
-        image: "images/event-02.jpg"
+        image: "images/event/event-02.jpg"
       },
       {
         id: "event-01",
         date: "OCTOBER 2025",
         title: "First General Body Meeting",
         shortDescription: "Praxis Initiative’s first General Body meeting brought members together to get acquainted, understand each department’s purpose and responsibilities, and collectively discuss potential research topics for the Fall semester.",
-        image: "images/event-01.jpg"
+        image: "images/event/event-01.jpg"
       }
     ]
   },

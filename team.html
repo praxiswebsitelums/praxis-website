@@ -1,35 +1,69 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Founding Members — Praxis</title><link rel="stylesheet" href="css/styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Team | Praxis Initiative at LUMS — the Executive Council and departments behind Praxis.">
+  <title>Team | Praxis</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/team.css">
+</head>
 <body>
+
 <header class="site-header">
   <nav class="navbar">
     <a class="brand" href="index.html" aria-label="Praxis home">
-      <img src="images/praxis-logo.jpg" alt="Praxis logo">
+      <img src="images/logo.jpg" alt="Praxis logo">
       <span class="brand-word">PRAXIS</span>
     </a>
+
     <div class="nav-links">
-      <a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="research.html">Research</a><a class="" href="events.html">Events</a><a class="active" href="team.html">Team</a>
+      <a class="" href="index.html">Home</a>
+      <a class="" href="about.html">About</a>
+      <a class="" href="research.html">Research</a>
+      <a class="" href="events.html">Events</a>
+      <a class="active" href="team.html">Team</a>
       <a class="nav-cta" href="register.html">Get Involved ↗</a>
     </div>
+
     <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
   </nav>
-  <div class="mobile-menu"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="research.html">Research</a><a class="" href="events.html">Events</a><a class="active" href="team.html">Team</a><a href="register.html">Get Involved ↗</a></div>
+
+  <div class="mobile-menu">
+    <a class="" href="index.html">Home</a>
+    <a class="" href="about.html">About</a>
+    <a class="" href="research.html">Research</a>
+    <a class="" href="events.html">Events</a>
+    <a class="active" href="team.html">Team</a>
+    <a href="register.html">Get Involved ↗</a>
+  </div>
 </header>
-<main>
-<section class="page-hero"><div class="container"><div class="eyebrow">04 / PEOPLE</div><h1>Founding Members</h1></div></section>
-<section class="page-content"><div class="container content-grid">
-<div><h2>Founding Members</h2></div><div><div class="list-cards"><div class="content-card"><h3>Founding Members</h3><p>The three founding members will be introduced here with their official names, roles and short biographies once the information is available.</p></div></div></div>
-</div></section>
-</main>
-<footer class="site-footer">
+
+<!-- The entire Team page — Hero, Executive Council, and every department
+     section — is rendered by js/team.js from data/team.js. Nothing about
+     the department structure is hardcoded here so departments can be
+     added, removed or reordered from the data file alone. -->
+<main class="ab3 team-page" data-team-root></main>
+
+<footer class="site-footer praxis-footer">
+  <div class="footer-bg-word" aria-hidden="true">PRAXIS</div>
+
   <div class="container">
     <div class="footer-top">
+
       <div>
-        <div class="footer-brand">PRAXIS</div>
-        <p class="footer-tag">The Praxis Initiative · Lahore University of Management Sciences</p>
+        <div class="footer-brand-row">
+          <img class="footer-logo" src="images/logo.jpg" alt="Praxis logo">
+          <div class="footer-brand">PRAXIS</div>
+        </div>
+
+        <p class="footer-tag">
+          The Praxis Initiative <br>
+          Lahore University of Management Sciences
+        </p>
       </div>
+
       <div>
         <div class="footer-heading">Explore</div>
         <div class="footer-links">
@@ -39,24 +73,41 @@
           <a href="team.html">Team</a>
         </div>
       </div>
+
       <div>
         <div class="footer-heading">Connect</div>
         <div class="footer-links">
-          <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="mailto:praxis@lums.edu.pk">Email</a>
+          <a href="#" data-footer-link="instagram" aria-label="Instagram">Instagram</a>
+          <a href="#" data-footer-link="linkedin" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" data-footer-link="email" aria-label="Email">Email</a>
         </div>
       </div>
+
       <div>
         <div class="footer-heading">Get Involved</div>
-        <div class="footer-links">
-          <a href="register.html">Register your interest →</a>
-        </div>
+        <p class="footer-join-copy">Do you want to join Praxis?</p>
+        <p class="footer-join-text">Explore ideas, contribute to research, and be part of the conversation.</p>
+        <a class="footer-join-button" href="register.html">Get Involved ↗</a>
       </div>
+
     </div>
+
     <div class="footer-bottom">
       <span>© 2026 The Praxis Initiative, LUMS</span>
-      <span>Developed by <a class="developer-link" href="https://ahmadzeeshan.tech" target="_blank" rel="noopener noreferrer">Ahmad Zeeshan</a></span>
+      <span>
+        Developed by
+        <a class="developer-link" href="https://ahmadzeeshan.tech" target="_blank" rel="noopener noreferrer">
+          Ahmad Zeeshan
+        </a>
+      </span>
     </div>
   </div>
-</footer><script src="data/site.js"></script><script src="js/main.js"></script></body></html>
+</footer>
+
+<script src="data/site.js"></script>
+<script src="js/main.js"></script>
+<script src="data/team.js"></script>
+<script src="js/team.js"></script>
+
+</body>
+</html>
