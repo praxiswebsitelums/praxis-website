@@ -108,17 +108,17 @@ window.PRAXIS_CONTENT = {
       {
         name: "Zawar Hussain",
         role: "President",
-        image: "images/team/team-01.jpg"
+        image: "images/team/president.jpg"
       },
       {
         name: "Maryam Zulfiqar",
         role: "General Secretary",
-        image: "images/team/team-02.jpg"
+        image: "images/team/general-secretary.jpg"
       },
       {
         name: "Sameen Jahangir",
         role: "Treasurer",
-        image: "images/team/team-03.jpg"
+        image: "images/team/treasurer.jpg"
       }
     ]
   },
