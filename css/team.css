@@ -339,3 +339,15 @@
     transform: none !important;
   }
 }
+
+/* ================================================================
+   MOBILE — USE MAROON INSTEAD OF GB PHOTO
+   ================================================================ */
+
+@media (max-width: 900px) {
+  .team-page .team-photo-section {
+    background-image: none;
+    background-color: var(--maroon);
+    background-attachment: scroll;
+  }
+}
