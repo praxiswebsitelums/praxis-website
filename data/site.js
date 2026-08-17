@@ -228,6 +228,48 @@ window.PRAXIS_CONTENT = {
   },
 
 
+  contact: {
+    eyebrow: "CONTACT / PRAXIS",
+    heading: "Contact Us",
+    intro: [
+      "Whether you want to sponsor a Praxis event, collaborate with us, or have an idea or question you'd like to share, we'd love to hear from you.",
+      "You can contact us through the people and platforms below."
+    ],
+
+    ec: {
+      eyebrow: "01 / EXECUTIVE COUNCIL",
+      heading: "Reach the team.",
+      intro: "For sponsorships, collaborations, partnerships, ideas, or general enquiries, get in touch with any member of our Executive Council.",
+
+      // TODO: replace with each member's real email address — these
+      // are placeholders only, clearly marked, so nothing goes live
+      // pointing at a fake inbox.
+      members: [
+        {
+          name: "Zawar Hussain",
+          role: "President",
+          email: "28090083@lums.edu.pk"
+        },
+        {
+          name: "Maryam Zulfiqar",
+          role: "General Secretary",
+          email: "27110155@lums.edu.pk"
+        },
+        {
+          name: "Sameen Jahangir",
+          role: "Treasurer",
+          email: "28020326@lums.edu.pk"
+        }
+      ]
+    },
+
+    connect: {
+      eyebrow: "02 / CONNECT",
+      heading: "Find Praxis online."
+    }
+  },
+
+
 
   footer: {
     developerName: "Ahmad Zeeshan",
@@ -239,16 +281,3 @@ window.PRAXIS_CONTENT = {
 };
 
 
-// Contact Page
-
-window.PRAXIS_CONTACT = {
-  ec: [
-    { name: "Zawar Hussain", role: "President", email: "28090083@lums.edu.pk" },
-    { name: "Maryam Zulfiqar", role: "General Secretary", email: "27110155@lums.edu.pk" },
-    { name: "Sameen Jahangir", role: "Treasurer", email: "28020326@lums.edu.pk" }
-  ],
-  socials: {
-    instagram: "https://www.instagram.com/praxislums",
-    linkedin: "https://www.linkedin.com/company/praxis-lums/"
-  }
-};

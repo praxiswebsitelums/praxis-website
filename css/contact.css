@@ -1,35 +1,331 @@
-/* Praxis Contact page — page-specific styles */
-.contact-page{background:var(--ivory);color:var(--ink)}
-.contact-hero{min-height:72vh;display:flex;align-items:center;padding-top:clamp(110px,12vw,170px);padding-bottom:clamp(80px,10vw,140px)}
-.contact-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:clamp(45px,8vw,120px);align-items:end}
-.contact-title{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(64px,9vw,128px);line-height:.86;letter-spacing:-.06em}
-.contact-intro{max-width:570px;padding-bottom:5px}
-.contact-intro p{margin:0 0 18px;font-size:clamp(17px,1.5vw,20px);line-height:1.7;color:rgba(31,25,25,.68)}
-.contact-intro p:last-child{margin-bottom:0}
-.contact-people{background:var(--ivory);padding-top:clamp(80px,9vw,130px);padding-bottom:clamp(90px,11vw,150px)}
-.contact-section-header{display:grid;grid-template-columns:minmax(180px,.32fr) minmax(0,1fr);gap:clamp(35px,7vw,100px);align-items:start;margin-bottom:clamp(48px,6vw,78px)}
-.contact-section-title,.contact-connect-title{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(42px,5.5vw,76px);line-height:.92;letter-spacing:-.045em}
-.contact-section-copy{max-width:650px;margin:20px 0 0;font-size:17px;line-height:1.7;color:rgba(31,25,25,.62)}
-.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.5vw,30px)}
-.contact-card{position:relative;min-height:260px;padding:clamp(27px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-radius:24px;border:1px solid rgba(74,17,25,.13);background:linear-gradient(145deg,rgba(122,31,43,.97),rgba(74,17,25,.99));color:var(--ivory);box-shadow:0 30px 65px -34px rgba(74,17,25,.55),inset 0 1px 0 rgba(255,255,255,.12);opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .5s ease,box-shadow .35s ease}
-.contact-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 35%,transparent 70%,rgba(255,255,255,.025))}
-.contact-card.is-visible{opacity:1;transform:translateY(0)}
-.contact-card-top,.contact-card-bottom{position:relative;z-index:1}
-.contact-card-number{margin-bottom:34px;font:500 10px/1.2 var(--mono);letter-spacing:.16em;color:rgba(247,243,236,.55)}
-.contact-card-name{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(27px,2.5vw,36px);line-height:1;letter-spacing:-.03em}
-.contact-card-role{margin-top:9px;font:500 10px/1.25 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(247,243,236,.67)}
-.contact-card-email{display:inline-flex;align-items:center;gap:9px;color:var(--ivory);text-decoration:none;font-size:14px;line-height:1.5;word-break:break-word}
-.contact-card-email::after{content:"↗";font-family:var(--mono);opacity:.65}
-.contact-email-placeholder{opacity:.5}
-.contact-connect{background:#fff;border-top:1px solid rgba(31,25,25,.08);padding-top:clamp(80px,9vw,130px);padding-bottom:clamp(90px,11vw,150px)}
-.contact-connect-grid{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:clamp(40px,8vw,120px);align-items:start}
-.social-links{display:flex;flex-direction:column}
-.social-link{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:25px 0;border-bottom:1px solid rgba(31,25,25,.15);color:var(--ink);text-decoration:none;transition:padding .3s ease,color .3s ease}
-.social-link:first-child{border-top:1px solid rgba(31,25,25,.15)}
-.social-link:hover{padding-left:10px;color:var(--maroon)}
-.social-link-label{font-family:var(--serif);font-size:clamp(27px,3vw,42px);line-height:1;letter-spacing:-.03em}
-.social-link-meta{display:flex;align-items:center;gap:12px;font:500 10px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(31,25,25,.5)}
-.social-link-arrow{font-size:18px}
-@media(max-width:900px){.contact-hero-grid,.contact-section-header,.contact-connect-grid{grid-template-columns:1fr;gap:35px}.contact-hero{min-height:auto}.contact-grid{grid-template-columns:1fr;max-width:600px}}
-@media(max-width:600px){.contact-hero{padding-top:105px;padding-bottom:75px}.contact-title{font-size:clamp(58px,17vw,82px)}.contact-intro p{font-size:16px}.contact-card{min-height:235px;padding:25px;border-radius:20px}.contact-card-name{font-size:30px}.social-link-label{font-size:30px}.social-link:hover{padding-left:0}}
-@media(prefers-reduced-motion:reduce){.contact-card{opacity:1;transform:none;transition:none}}
+/* =====================================================================
+   CONTACT PAGE — page-specific styles
+
+   The shared editorial system (.ab3, .wrap, .eyebrow, .rv, .mask,
+   .on-light, etc.) already lives in css/styles.css and is reused as-is.
+   This file adds only what's unique to Contact: the hero intro, the
+   maroon-glass EC contact cards (same recipe as .event-card), and the
+   editorial social link rows.
+   ===================================================================== */
+
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+
+.contact-hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  margin: 0 0 28px;
+}
+
+.contact-intro {
+  max-width: 640px;
+  font-size: clamp(16.5px, 1.4vw, 19px);
+  line-height: 1.7;
+}
+
+.contact-intro p { margin: 0 0 14px; }
+.contact-intro p:last-child { margin-bottom: 0; }
+
+
+/* =====================================================================
+   SECTION DIVIDERS / SPACING
+   ===================================================================== */
+
+.contact-section {
+  border-top: 1px solid var(--line);
+}
+
+.contact-section-head {
+  max-width: 640px;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.contact-section-head p {
+  margin: 14px 0 0;
+  font-size: clamp(15.5px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: #57504d;
+}
+
+
+/* =====================================================================
+   EC CONTACT CARDS
+   (same deep-maroon smoked-glass recipe as .event-card, adapted to a
+   simple number / name / role / email layout)
+   ===================================================================== */
+
+.contact-ec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(22px, 2.4vw, 30px);
+}
+
+.contact-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  padding: clamp(26px, 2.6vw, 34px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(
+    155deg,
+    rgba(122, 31, 43, 0.94) 0%,
+    rgba(74, 17, 25, 0.97) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(247, 243, 236, 0.14);
+  box-shadow:
+    0 30px 70px -34px rgba(74, 17, 25, 0.5),
+    inset 0 1px 0 rgba(247, 243, 236, 0.1);
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    transform 0.5s cubic-bezier(0.19, 0.78, 0.24, 1),
+    box-shadow 0.5s ease,
+    opacity 0.8s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+/* soft inner highlight along the top edge, same as .event-card::before */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(247, 243, 236, 0.07), transparent);
+  pointer-events: none;
+}
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .contact-card {
+    background: linear-gradient(
+      155deg,
+      rgba(122, 31, 43, 0.97) 0%,
+      rgba(58, 14, 20, 0.99) 100%
+    );
+  }
+}
+
+.contact-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-card:hover,
+.contact-card:focus-within {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow:
+    0 40px 90px -34px rgba(74, 17, 25, 0.62),
+    inset 0 1px 0 rgba(247, 243, 236, 0.14);
+}
+
+.contact-card-number {
+  position: relative;
+  z-index: 1;
+  font: 500 12px var(--mono);
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.contact-card-name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(23px, 2vw, 29px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: auto 0 6px;
+  padding-top: 24px;
+}
+
+.contact-card-role {
+  position: relative;
+  z-index: 1;
+  font: 10.5px var(--mono);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 26px;
+}
+
+.contact-card-email {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font: 600 13px var(--mono);
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: border-color 0.25s ease;
+  word-break: break-word;
+}
+
+.contact-card-email .arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+.contact-card-email:hover,
+.contact-card-email:focus-visible {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.contact-card-email:hover .arrow,
+.contact-card-email:focus-visible .arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* =====================================================================
+   CONNECT — social link rows
+   ===================================================================== */
+
+.connect-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.connect-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(24px, 3vw, 34px) 6px;
+  border-top: 1px solid var(--line);
+  transition: padding-left 0.35s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+.connect-list .connect-link:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.connect-link-label {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 46px);
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
+}
+
+.connect-link-supporting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 12px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.connect-link-supporting .arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.19, 0.78, 0.24, 1);
+}
+
+.connect-link:hover,
+.connect-link:focus-visible {
+  padding-left: 16px;
+}
+
+.connect-link:hover .connect-link-label,
+.connect-link:focus-visible .connect-link-label {
+  color: var(--maroon);
+}
+
+.connect-link:hover .connect-link-supporting,
+.connect-link:focus-visible .connect-link-supporting {
+  color: var(--maroon);
+}
+
+.connect-link:hover .connect-link-supporting .arrow,
+.connect-link:focus-visible .connect-link-supporting .arrow {
+  transform: translate(4px, -4px);
+}
+
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+
+@media (max-width: 900px) {
+  .contact-ec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* three cards on a 2-column grid: centre the leftover card */
+  .contact-ec-grid > *:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 11px);
+    margin: 0 auto;
+  }
+
+  .connect-link-label { font-size: clamp(24px, 4.4vw, 34px); }
+}
+
+@media (max-width: 640px) {
+  .contact-ec-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-ec-grid > *:nth-child(3):last-child { max-width: 420px; }
+
+  .contact-card { min-height: 240px; }
+
+  .connect-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .connect-link:hover,
+  .connect-link:focus-visible {
+    padding-left: 6px;
+  }
+}
+
+
+/* =====================================================================
+   REDUCED MOTION
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+
+  .contact-card:hover,
+  .contact-card:focus-within {
+    transform: none !important;
+    box-shadow:
+      0 30px 70px -34px rgba(74, 17, 25, 0.5),
+      inset 0 1px 0 rgba(247, 243, 236, 0.1) !important;
+  }
+
+  .connect-link,
+  .connect-link-label,
+  .connect-link-supporting,
+  .connect-link-supporting .arrow,
+  .contact-card-email .arrow {
+    transition: none !important;
+  }
+
+  .connect-link:hover,
+  .connect-link:focus-visible {
+    padding-left: 6px !important;
+  }
+}

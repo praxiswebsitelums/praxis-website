@@ -1,49 +1,212 @@
+/* =====================================================================
+   CONTACT PAGE — page-specific behaviour
+
+   Reads window.PRAXIS_CONTENT.contact and renders the hero copy, the
+   Executive Council contact cards, and the Instagram/LinkedIn links,
+   then adds staggered scroll reveal. Social URLs are read from
+   window.PRAXIS_CONTENT.footer (the same values the site footer
+   already uses) rather than being duplicated in the contact data.
+
+   Global nav, header scroll state, mobile menu and the shared
+   .rv / .mask reveal system are handled by js/main.js and are not
+   duplicated here.
+   ===================================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
-  const data = window.PRAXIS_CONTACT;
-  if (!data) return;
+  const content = window.PRAXIS_CONTENT;
+  const contact = content && content.contact;
+  if (!contact) return;
 
-  const grid = document.querySelector("[data-contact-ec]");
-  (data.ec || []).forEach((member, i) => {
-    const card = document.createElement("article");
-    card.className = "contact-card";
-    card.innerHTML = `
-      <div class="contact-card-top">
-        <div class="contact-card-number">${String(i + 1).padStart(2,"0")}</div>
-        <h3 class="contact-card-name">${member.name}</h3>
-        <div class="contact-card-role">${member.role}</div>
-      </div>
-      <div class="contact-card-bottom"></div>`;
-    const bottom = card.querySelector(".contact-card-bottom");
-    if (member.email && !member.email.startsWith("REPLACE_")) {
-      const a = document.createElement("a");
-      a.className = "contact-card-email";
-      a.href = `mailto:${member.email}`;
-      a.textContent = member.email;
-      bottom.appendChild(a);
-    } else {
-      bottom.innerHTML = `<span class="contact-card-email contact-email-placeholder">Email to be added</span>`;
-    }
-    grid.appendChild(card);
-  });
-
-  const socials = document.querySelector("[data-contact-socials]");
-  [
-    ["Instagram", data.socials?.instagram, "Follow Praxis"],
-    ["LinkedIn", data.socials?.linkedin, "Connect with Praxis"]
-  ].forEach(([label,url,meta]) => {
-    if (!url) return;
-    const a=document.createElement("a");
-    a.className="social-link";
-    a.href=url; a.target="_blank"; a.rel="noopener noreferrer";
-    a.innerHTML=`<span class="social-link-label">${label}</span><span class="social-link-meta">${meta}<span class="social-link-arrow">↗</span></span>`;
-    socials.appendChild(a);
-  });
-
-  const items=document.querySelectorAll(".contact-card,.rv,.mask");
-  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-    items.forEach(x=>x.classList.add("is-visible"));
-  } else if ("IntersectionObserver" in window) {
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-visible");io.unobserve(e.target)}}),{threshold:.12});
-    items.forEach(x=>io.observe(x));
-  } else items.forEach(x=>x.classList.add("is-visible"));
+  renderHero(contact);
+  renderEC(contact.ec);
+  renderConnect(contact.connect, content.footer || {});
+  setupReveal();
+  setupCardTilt();
 });
+
+/* ---------- motion / input helpers ---------- */
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function hasFinePointer() {
+  return window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+}
+
+function el(tag, className) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  return node;
+}
+
+
+/* =====================================================================
+   HERO (static markup, text populated from data)
+   ===================================================================== */
+
+function renderHero(contact) {
+  const eyebrowEl = document.querySelector("[data-contact-eyebrow]");
+  const headingEl = document.querySelector("[data-contact-heading]");
+  const introEl = document.querySelector("[data-contact-intro]");
+
+  if (eyebrowEl && contact.eyebrow) eyebrowEl.textContent = contact.eyebrow;
+  if (headingEl && contact.heading) headingEl.textContent = contact.heading;
+
+  if (introEl && Array.isArray(contact.intro)) {
+    introEl.innerHTML = "";
+    contact.intro.forEach((line) => {
+      const p = document.createElement("p");
+      p.textContent = line;
+      introEl.appendChild(p);
+    });
+  }
+}
+
+
+/* =====================================================================
+   EXECUTIVE COUNCIL CONTACT CARDS
+   ===================================================================== */
+
+function renderEC(ec) {
+  if (!ec) return;
+
+  const eyebrowEl = document.querySelector("[data-contact-ec-eyebrow]");
+  const headingEl = document.querySelector("[data-contact-ec-heading]");
+  const introEl = document.querySelector("[data-contact-ec-intro]");
+  const grid = document.querySelector("[data-contact-ec]");
+
+  if (eyebrowEl && ec.eyebrow) eyebrowEl.textContent = ec.eyebrow;
+  if (headingEl && ec.heading) headingEl.textContent = ec.heading;
+  if (introEl && ec.intro) introEl.textContent = ec.intro;
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  (ec.members || []).forEach((member, index) => {
+    grid.appendChild(createContactCard(member, index));
+  });
+}
+
+function createContactCard(member, index) {
+  const card = el("article", "contact-card");
+
+  const number = el("div", "contact-card-number");
+  number.textContent = String(index + 1).padStart(2, "0");
+
+  const name = el("div", "contact-card-name");
+  name.textContent = member.name || "";
+
+  const role = el("div", "contact-card-role");
+  role.textContent = member.role || "";
+
+  card.append(number, name, role);
+
+  if (member.email) {
+    const email = document.createElement("a");
+    email.className = "contact-card-email";
+    email.href = `mailto:${member.email}`;
+    email.innerHTML = `<span>${member.email}</span><span class="arrow" aria-hidden="true">↗</span>`;
+    card.appendChild(email);
+  }
+
+  return card;
+}
+
+
+/* =====================================================================
+   CONNECT — Instagram / LinkedIn
+   ===================================================================== */
+
+function renderConnect(connect, footer) {
+  if (!connect) return;
+
+  const eyebrowEl = document.querySelector("[data-contact-connect-eyebrow]");
+  const headingEl = document.querySelector("[data-contact-connect-heading]");
+  const list = document.querySelector("[data-contact-connect]");
+
+  if (eyebrowEl && connect.eyebrow) eyebrowEl.textContent = connect.eyebrow;
+  if (headingEl && connect.heading) headingEl.textContent = connect.heading;
+  if (!list) return;
+
+  const socials = [
+    { label: "Instagram", supporting: "Follow Praxis", url: footer.instagram },
+    { label: "LinkedIn", supporting: "Connect with Praxis", url: footer.linkedin }
+  ].filter((social) => !!social.url);
+
+  list.innerHTML = "";
+  socials.forEach((social) => list.appendChild(createConnectLink(social)));
+}
+
+function createConnectLink(social) {
+  const link = document.createElement("a");
+  link.className = "connect-link";
+  link.href = social.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  const label = el("span", "connect-link-label");
+  label.textContent = social.label;
+
+  const supporting = el("span", "connect-link-supporting");
+  supporting.innerHTML = `<span>${social.supporting}</span><span class="arrow" aria-hidden="true">↗</span>`;
+
+  link.append(label, supporting);
+  return link;
+}
+
+
+/* =====================================================================
+   SCROLL REVEAL
+   ===================================================================== */
+
+function setupReveal() {
+  const cards = document.querySelectorAll(".contact-card, .connect-link");
+  if (!cards.length) return;
+
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+    cards.forEach((card) => card.classList.add("in"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  cards.forEach((card, index) => {
+    card.style.transitionDelay = `${Math.min(index * 0.08, 0.32)}s`;
+    observer.observe(card);
+  });
+}
+
+
+/* ---------- subtle 3D tilt on hover — desktop / fine-pointer only ---------- */
+function setupCardTilt() {
+  if (prefersReducedMotion() || !hasFinePointer()) return;
+
+  document.querySelectorAll(".contact-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => onCardTiltMove(e, card));
+    card.addEventListener("mouseleave", () => onCardTiltLeave(card));
+  });
+}
+
+function onCardTiltMove(e, card) {
+  const rect = card.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+  const rotateX = (-y * 3).toFixed(2);
+  const rotateY = (x * 3).toFixed(2);
+
+  card.style.transform = `translateY(-8px) scale(1.012) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+function onCardTiltLeave(card) {
+  card.style.transform = "";
+}
