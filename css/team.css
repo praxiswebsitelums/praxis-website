@@ -351,3 +351,13 @@
     background-attachment: scroll;
   }
 }
+
+@media (max-width: 900px) {
+  .team-page .team-hero.team-photo-section {
+    background-image: var(--team-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
