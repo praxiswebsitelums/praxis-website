@@ -237,3 +237,18 @@ window.PRAXIS_CONTENT = {
     linkedin: "https://www.linkedin.com/company/praxis-lums/"
   }
 };
+
+
+// Contact Page
+
+window.PRAXIS_CONTACT = {
+  ec: [
+    { name: "Zawar Hussain", role: "President", email: "28090083@lums.edu.pk" },
+    { name: "Maryam Zulfiqar", role: "General Secretary", email: "27110155@lums.edu.pk" },
+    { name: "Sameen Jahangir", role: "Treasurer", email: "28020326@lums.edu.pk" }
+  ],
+  socials: {
+    instagram: "https://www.instagram.com/praxislums",
+    linkedin: "https://www.linkedin.com/company/praxis-lums/"
+  }
+};
