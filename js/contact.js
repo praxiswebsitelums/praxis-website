@@ -1,16 +1,6 @@
-/* =====================================================================
-   CONTACT PAGE — page-specific behaviour
+/* Contact page rendering and interactions. */
 
-   Reads window.PRAXIS_CONTENT.contact and renders the hero copy, the
-   Executive Council contact cards, and the Instagram/LinkedIn links,
-   then adds staggered scroll reveal. Social URLs are read from
-   window.PRAXIS_CONTENT.footer (the same values the site footer
-   already uses) rather than being duplicated in the contact data.
 
-   Global nav, header scroll state, mobile menu and the shared
-   .rv / .mask reveal system are handled by js/main.js and are not
-   duplicated here.
-   ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const content = window.PRAXIS_CONTENT;
@@ -24,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCardTilt();
 });
 
-/* ---------- motion / input helpers ---------- */
 function prefersReducedMotion() {
   return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
@@ -38,11 +27,6 @@ function el(tag, className) {
   if (className) node.className = className;
   return node;
 }
-
-
-/* =====================================================================
-   HERO (static markup, text populated from data)
-   ===================================================================== */
 
 function renderHero(contact) {
   const eyebrowEl = document.querySelector("[data-contact-eyebrow]");
@@ -61,11 +45,6 @@ function renderHero(contact) {
     });
   }
 }
-
-
-/* =====================================================================
-   EXECUTIVE COUNCIL CONTACT CARDS
-   ===================================================================== */
 
 function renderEC(ec) {
   if (!ec) return;
@@ -111,11 +90,6 @@ function createContactCard(member, index) {
   return card;
 }
 
-
-/* =====================================================================
-   CONNECT — Instagram / LinkedIn
-   ===================================================================== */
-
 function renderConnect(connect, footer) {
   if (!connect) return;
 
@@ -153,11 +127,6 @@ function createConnectLink(social) {
   return link;
 }
 
-
-/* =====================================================================
-   SCROLL REVEAL
-   ===================================================================== */
-
 function setupReveal() {
   const cards = document.querySelectorAll(".contact-card, .connect-link");
   if (!cards.length) return;
@@ -185,8 +154,6 @@ function setupReveal() {
   });
 }
 
-
-/* ---------- subtle 3D tilt on hover — desktop / fine-pointer only ---------- */
 function setupCardTilt() {
   if (prefersReducedMotion() || !hasFinePointer()) return;
 

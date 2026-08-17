@@ -1,3 +1,6 @@
+/* Global design system, navigation, footer, shared components and responsive rules. */
+
+/* Base. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 
 :root {
@@ -32,6 +35,7 @@ img { display: block; max-width: 100%; }
 .eyebrow { font: 500 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
 .serif { font-family: var(--serif); }
 
+/* Navigation. */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 16px 0;
@@ -65,6 +69,7 @@ img { display: block; max-width: 100%; }
 .nav-cta::after { display:none; }
 .menu-button { display:none; margin-left:auto; background:none; border:0; color:var(--ivory); font-size:24px; }
 
+/* Home hero. */
 .hero {
   position: relative; min-height: 94vh; display: grid; align-items: end;
   background: var(--ink); color: var(--ivory); overflow: hidden;
@@ -109,6 +114,7 @@ img { display: block; max-width: 100%; }
 .orbit-two { width:650px; height:250px; right:-120px; top:34%; transform:rotate(-18deg); }
 .hero-glow { position:absolute; z-index:1; width:340px; height:340px; right:12%; top:20%; border-radius:50%; background:radial-gradient(circle, rgba(233,217,217,.18), transparent 68%); filter:blur(8px); }
 
+/* Announcement bar. */
 .announcement {
   position:relative; z-index:5; width:min(1120px, calc(100% - 48px)); margin:-34px auto 0;
   padding:20px 24px; display:flex; align-items:center; gap:20px;
@@ -120,7 +126,9 @@ img { display: block; max-width: 100%; }
 .announcement-label { color:var(--maroon); font:500 10px var(--mono); letter-spacing:.14em; }
 .announcement-text { font-size:14px; }
 .announcement .button { padding:10px 14px; font-size:10px; }
+.announcement[hidden] { display:none !important; }
 
+/* Shared sections. */
 .section { padding:130px 0; }
 .section-dark { background:var(--ink); color:var(--ivory); }
 .section-maroon { background:var(--maroon-deep); color:var(--ivory); }
@@ -169,6 +177,7 @@ img { display: block; max-width: 100%; }
 .final-cta { text-align:center; padding:150px 0; }
 .final-cta h2 { font-family:var(--serif); font-size:clamp(64px,10vw,150px); line-height:.83; letter-spacing:-.06em; font-weight:500; margin:18px auto 36px; max-width:1000px; }
 
+/* Footer. */
 .site-footer { background:var(--maroon-deep); color:var(--ivory); padding:70px 0 28px; }
 .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:70px; }
 .footer-brand { font-size:30px; font-weight:700; letter-spacing:.12em; }
@@ -240,9 +249,6 @@ img { display: block; max-width: 100%; }
   .footer-bottom { flex-direction:column; }
 }
 
-/* ==========================================================================
-   HOME PAGE
-   ========================================================================== */
 .about-home-wrap { width:100%; }
     .about-home-heading .eyebrow { margin-bottom:18px; }
     .about-home-heading h2 {
@@ -465,15 +471,12 @@ img { display: block; max-width: 100%; }
       }
     }
 
-/* ==========================================================================
-   SHARED FOOTER
-   ========================================================================== */
 .praxis-footer {
       position:relative;
       overflow:hidden;
     }
 
-    /* Large PRAXIS watermark centered behind the entire footer */
+    
     .praxis-footer .footer-bg-word {
       position:absolute;
       left:50%;
@@ -503,7 +506,7 @@ img { display: block; max-width: 100%; }
       margin-bottom:22px;
     }
 
-    /* Same JPG logo as the navbar, displayed as a circular mark */
+    
     .praxis-footer .footer-logo {
       width:52px;
       height:52px;
@@ -518,7 +521,7 @@ img { display: block; max-width: 100%; }
       margin:0;
     }
 
-    /* Larger contrasting section headings */
+    
     .praxis-footer .footer-heading {
       margin-bottom:24px;
       font-family:var(--mono);
@@ -530,7 +533,7 @@ img { display: block; max-width: 100%; }
       color:#E8A6AF;
     }
 
-    .praxis-footer .footer-join-copy {
+    .praxis-footer .footer-contact-copy {
       margin:0 0 22px;
       max-width:300px;
       font-family:var(--serif);
@@ -540,15 +543,15 @@ img { display: block; max-width: 100%; }
       font-weight:500;
     }
 
-    .praxis-footer .footer-join-text {
+    .praxis-footer .footer-contact-text {
       margin:0 0 24px;
       max-width:310px;
       color:rgba(247,243,236,.68);
       line-height:1.5;
     }
 
-    /* Larger white Get Involved button */
-    .praxis-footer .footer-join-button {
+    
+    .praxis-footer .footer-contact-button {
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -565,7 +568,7 @@ img { display: block; max-width: 100%; }
       transition:transform .2s ease;
     }
 
-    .praxis-footer .footer-join-button:hover {
+    .praxis-footer .footer-contact-button:hover {
       transform:translateY(-2px);
     }
 
@@ -577,16 +580,12 @@ img { display: block; max-width: 100%; }
         font-size:180px;
       }
 
-      .praxis-footer .footer-join-copy,
-      .praxis-footer .footer-join-text {
+      .praxis-footer .footer-contact-copy,
+      .praxis-footer .footer-contact-text {
         max-width:none;
       }
     }
 
-/* ==========================================================================
-   HOME PAGE — RESPONSIVE OPTIMIZATION
-   ========================================================================== */
-/* Tablet / intermediate widths */
   @media (max-width:1100px) {
     .hero-content,
     .container { max-width:100%; }
@@ -614,7 +613,7 @@ img { display: block; max-width: 100%; }
     }
   }
 
-  /* Tablet */
+  
   @media (max-width:900px) {
     .hero-content {
       padding-top:clamp(100px,14vh,150px);
@@ -674,7 +673,7 @@ img { display: block; max-width: 100%; }
     }
   }
 
-  /* Mobile */
+  
   @media (max-width:767px) {
     .hero-content {
       min-height:100svh;
@@ -909,7 +908,7 @@ img { display: block; max-width: 100%; }
       max-width:45vw;
     }
 
-    /* Footer: preserve its design, only make the existing columns usable. */
+    
     .praxis-footer .footer-top {
       grid-template-columns:1fr 1fr;
       gap:42px 28px;
@@ -929,11 +928,11 @@ img { display: block; max-width: 100%; }
       margin-bottom:16px;
     }
 
-    .praxis-footer .footer-join-copy {
+    .praxis-footer .footer-contact-copy {
       font-size:26px;
     }
 
-    .praxis-footer .footer-join-button {
+    .praxis-footer .footer-contact-button {
       min-height:46px;
       padding:14px 20px;
     }
@@ -943,7 +942,7 @@ img { display: block; max-width: 100%; }
     }
   }
 
-  /* Small phones */
+  
   @media (max-width:480px) {
     .hero-content {
       padding-left:18px;
@@ -1047,16 +1046,6 @@ img { display: block; max-width: 100%; }
     }
   }
 
-/* ==========================================================================
-   ABOUT PAGE
-   ========================================================================== */
-/* =====================================================================
-   ABOUT — scoped entirely under .ab3 so the Home page is unaffected.
-   Palette: var(--cream), var(--maroon), var(--ink), plus the site's
-   existing dark section background (.section-dark) and #57504D body copy.
-   No new colours are introduced.
-   ===================================================================== */
-
 .ab3{ --disp:var(--serif); --lab:var(--mono);
       --pad-y:clamp(72px,10vw,168px);
       --gut:clamp(24px,5vw,72px);
@@ -1075,13 +1064,12 @@ img { display: block; max-width: 100%; }
 
 .ab3 .on-light{ background:var(--cream); color:var(--ink); }
 .ab3 .on-dark{ background:var(--ink); color:#F4EFE7; }
-.ab3 .on-maroon{ background:var(--maroon); color:#F4EFE7; }
+.ab3 .on-maroon{ background:var(--maroon-deep); color:#F4EFE7; }
 .ab3 p{ color:#57504D; line-height:1.72; }
 .ab3 .on-dark p, .ab3 .on-maroon p{ color:rgba(244,239,231,.68); }
 
 .ab3 h2{ font-family:var(--disp); font-weight:500; letter-spacing:-.05em; line-height:.95; margin:0; }
 
-/* ---- reveal primitives ---- */
 .ab3 .rv{ opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.19,.78,.24,1), transform .8s cubic-bezier(.19,.78,.24,1); }
 .ab3 .rv.in{ opacity:1; transform:translateY(0); }
 .ab3 .rv.d1{ transition-delay:.1s } .ab3 .rv.d2{ transition-delay:.2s } .ab3 .rv.d3{ transition-delay:.3s } .ab3 .rv.d4{ transition-delay:.4s }
@@ -1096,24 +1084,18 @@ img { display: block; max-width: 100%; }
   .ab3 .rv, .ab3 .rv-left, .ab3 .rv-right, .ab3 .mask > span{ opacity:1 !important; transform:none !important; transition:none !important; }
 }
 
-/* ---- watermark word, sits behind content on dark sections ---- */
 .ab3 .watermark{ position:absolute; z-index:1; top:50%; left:50%; transform:translate(-50%,-50%); font-family:var(--disp); font-weight:500; font-size:clamp(160px,26vw,460px); letter-spacing:-.06em; line-height:1; color:rgba(247,243,236,.045); white-space:nowrap; pointer-events:none; user-select:none; }
 
-/* ---- orbital rings ---- */
 .ab3 .orbit{ position:absolute; border-radius:50%; border:1px solid var(--line-on-light); pointer-events:none; }
 .ab3 .orbit.spin{ animation:ab3spin 60s linear infinite; }
 .ab3 .orbit.spin-slow{ animation:ab3spin 100s linear infinite; }
 @keyframes ab3spin{ to{ transform:rotate(360deg) } }
 @media (prefers-reduced-motion:reduce){ .ab3 .orbit.spin, .ab3 .orbit.spin-slow{ animation:none } }
 
-/* ---- glass panel: used only on dark/maroon sections ---- */
 .ab3 .glass{ background:rgba(255,255,255,.055); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.12); }
 
 .ab3 a:focus-visible, .ab3 button:focus-visible{ outline:2px solid var(--maroon); outline-offset:4px; }
 
-/* =====================================================================
-   01 — HERO
-   ===================================================================== */
 .ab3-hero{ min-height:82vh; display:flex; align-items:center; padding-top:calc(var(--pad-y) + 20px); }
 .ab3-hero .wrap{ display:grid; grid-template-columns:1.35fr .9fr; gap:var(--gut); align-items:center; }
 .ab3-hero h1{ font-family:var(--disp); font-weight:500; font-size:clamp(52px,8.6vw,140px); line-height:.9; letter-spacing:-.055em; margin:0 0 34px; }
@@ -1124,7 +1106,7 @@ img { display: block; max-width: 100%; }
 .ab3-hero-orbit-c{ width:38%; aspect-ratio:1; border-style:dashed; }
 .ab3-logo-parallax{ position:relative; z-index:2; width:46%; will-change:transform; transition:transform .12s linear; }
 .ab3-logo-float{ animation:ab3float 8s ease-in-out infinite; }
-.ab3-logo-float img{ width:100%; display:block; filter:drop-shadow(0 30px 50px rgba(20,14,11,.14)); }
+.ab3-logo-float img{ width:100%; max-height:100%; object-fit:contain; display:block; filter:drop-shadow(0 30px 50px rgba(20,14,11,.14)); }
 @keyframes ab3float{ 0%,100%{ transform:translateY(0) rotate(-1.5deg) } 50%{ transform:translateY(-14px) rotate(1.5deg) } }
 @media (prefers-reduced-motion:reduce){ .ab3-logo-float{ animation:none } }
 @media(max-width:900px){
@@ -1133,9 +1115,6 @@ img { display: block; max-width: 100%; }
   .ab3-logo-parallax{ width:36% }
 }
 
-/* =====================================================================
-   02 — WHAT IS PRAXIS
-   ===================================================================== */
 .ab3-line{ position:relative; height:1px; background:var(--line-on-light); margin-bottom:64px; overflow:hidden; }
 .ab3-line span{ position:absolute; top:0; left:-30%; width:30%; height:100%; background:var(--maroon); transform:translateX(0); transition:transform 1.1s cubic-bezier(.19,.78,.24,1); }
 .ab3-line.in span{ transform:translateX(430%); }
@@ -1146,9 +1125,6 @@ img { display: block; max-width: 100%; }
 .ab3-what-grid p:last-child{ grid-column:7 / 13; }
 @media(max-width:900px){ .ab3-what-grid{ grid-template-columns:1fr; gap:22px } .ab3-what-grid p, .ab3-what-grid p:first-child, .ab3-what-grid p:last-child{ grid-column:1 } }
 
-/* =====================================================================
-   03 — WHY PRAXIS (dark)
-   ===================================================================== */
 .ab3-why .wrap{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--gut); align-items:start; }
 .ab3-why h2{ font-size:clamp(38px,6vw,92px); }
 .ab3-why-orbit{ position:absolute; top:8%; right:6%; width:min(46vw,520px); aspect-ratio:1; border-color:var(--line-on-dark); }
@@ -1157,9 +1133,6 @@ img { display: block; max-width: 100%; }
 .ab3-why-panel p:last-child{ margin-bottom:0; }
 @media(max-width:900px){ .ab3-why .wrap{ grid-template-columns:1fr; gap:34px } .ab3-why-panel{ padding:28px 24px } }
 
-/* =====================================================================
-   04 — HOW WE WORK
-   ===================================================================== */
 .ab3-work h2{ font-size:clamp(40px,6vw,92px); margin-bottom:70px; max-width:900px; }
 .ab3-track{ display:flex; align-items:flex-start; }
 .ab3-stage{ flex:1; min-width:0; perspective:900px; }
@@ -1180,9 +1153,6 @@ img { display: block; max-width: 100%; }
   .ab3-stage-inner{ padding-right:0; padding-bottom:8px; }
 }
 
-/* =====================================================================
-   05 — FOUNDING PRAXIS (maroon)
-   ===================================================================== */
 .ab3-founding-head{  margin-bottom:80px; }
 .ab3-founding-head h2{ font-size:clamp(40px,6vw,92px); margin-bottom:22px; }
 .ab3-founding-head p{ font-size:clamp(16.5px,1.4vw,19px); }
@@ -1192,7 +1162,6 @@ img { display: block; max-width: 100%; }
 .ab3-founder.reverse .ab3-founder-media{ order:2; }
 .ab3-founder.reverse .ab3-founder-text{ order:1; }
 
-/* ---- founder portrait: smaller, editorial, floating card ---- */
 .ab3-founder-media{ position:relative; display:flex; }
 .ab3-founder:not(.reverse) .ab3-founder-media{ justify-content:flex-start; }
 .ab3-founder.reverse .ab3-founder-media{ justify-content:flex-end; }
@@ -1228,9 +1197,6 @@ img { display: block; max-width: 100%; }
   .ab3-founder-orbit{ width:118%; }
 }
 
-/* =====================================================================
-   06 — WHAT WE BELIEVE (dark, climax)
-   ===================================================================== */
 .ab3-believe h2{ font-size:clamp(36px,6.6vw,104px); max-width:900px; margin-bottom:70px; }
 .ab3-believe-list{ border-top:1px solid var(--line-on-dark); }
 .ab3-belief{ position:relative; display:flex; align-items:baseline; gap:28px; padding:26px 4px; border-bottom:1px solid var(--line-on-dark); cursor:default; transition:transform .45s cubic-bezier(.19,.78,.24,1), opacity .45s ease; }
@@ -1240,16 +1206,13 @@ img { display: block; max-width: 100%; }
 .ab3-belief .t{ font-family:var(--disp); font-weight:500; font-size:clamp(24px,4.4vw,58px); letter-spacing:-.035em; line-height:1.02; }
 @media(max-width:600px){ .ab3-belief{ gap:16px } .ab3-believe-list:hover .ab3-belief:hover{ transform:translateX(8px) } }
 
-/* =====================================================================
-   07 — GET INVOLVED
-   ===================================================================== */
 .ab3-cta .wrap{ display:grid; grid-template-columns:1.2fr .8fr; gap:var(--gut); align-items:center; }
 .ab3-cta h2{ font-size:clamp(38px,6vw,88px); margin-bottom:22px; }
 .ab3-cta p{ max-width:460px; font-size:clamp(16.5px,1.4vw,19px); margin:0 0 36px; }
 .ab3-cta-btn{ display:inline-flex; align-items:center; gap:10px; background:var(--maroon); color:#f8f5f3; padding:17px 30px; border-radius:999px; font-family:var(--lab); font-size:13.5px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:transform .3s cubic-bezier(.19,.78,.24,1), box-shadow .3s ease; box-shadow:0 16px 34px -16px rgba(88,18,31,.55); }
 .ab3-cta-btn:hover{ transform:translateY(-4px); box-shadow:0 24px 44px -16px rgba(88,18,31,.6); }
 .ab3-cta-mark{ position:relative; display:flex; align-items:center; justify-content:center; height:220px; }
-.ab3-cta-mark img{ width:64%; opacity:.5; animation:ab3float 9s ease-in-out infinite; }
+.ab3-cta-mark img{ width:64%; max-height:100%; object-fit:contain; opacity:.5; animation:ab3float 9s ease-in-out infinite; }
 .ab3-cta-orbit{ position:absolute; width:80%; aspect-ratio:1; }
 @media(prefers-reduced-motion:reduce){ .ab3-cta-mark img{ animation:none } }
 @media(max-width:900px){ .ab3-cta .wrap{ grid-template-columns:1fr; gap:36px } .ab3-cta-mark{ height:150px; order:-1 } }

@@ -1,3 +1,5 @@
+/* Central Praxis content and page data. */
+
 window.PRAXIS_CONTENT = {
   brand: {
     name: "PRAXIS",
@@ -36,7 +38,7 @@ window.PRAXIS_CONTENT = {
         eyebrow: "COMMUNITY",
         title: "Built by students.",
         description: "Praxis is a community for curious people who want to learn, question and contribute.",
-        buttonText: "Get Involved",
+        buttonText: "Contact Us",
         buttonLink: "register.html"
       }
     ]
@@ -123,9 +125,7 @@ window.PRAXIS_CONTENT = {
     ]
   },
 
-  /* =========================================
-     RESEARCH — powers research.html
-     ========================================= */
+  
 
   research: {
     eyebrow: "01 / OUR RESEARCH",
@@ -182,7 +182,6 @@ window.PRAXIS_CONTENT = {
     ]
   },
 
-
     events: {
     eyebrow: "01 / EVENTS",
     heading: "Ideas in motion.",
@@ -227,7 +226,6 @@ window.PRAXIS_CONTENT = {
     ]
   },
 
-
   contact: {
     eyebrow: "CONTACT / PRAXIS",
     heading: "Contact Us",
@@ -240,10 +238,6 @@ window.PRAXIS_CONTENT = {
       eyebrow: "01 / EXECUTIVE COUNCIL",
       heading: "Reach the team.",
       intro: "For sponsorships, collaborations, partnerships, ideas, or general enquiries, get in touch with any member of our Executive Council.",
-
-      // TODO: replace with each member's real email address — these
-      // are placeholders only, clearly marked, so nothing goes live
-      // pointing at a fake inbox.
       members: [
         {
           name: "Zawar Hussain",
@@ -269,15 +263,10 @@ window.PRAXIS_CONTENT = {
     }
   },
 
-
-
   footer: {
-    developerName: "Ahmad Zeeshan",
-    developerUrl: "https://ahmadzeeshan.tech",
     email: "praxis@lums.edu.pk",
-    instagram: "https://www.instagram.com/praxislums?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    instagram: "https://www.instagram.com/praxislums/",
     linkedin: "https://www.linkedin.com/company/praxis-lums/"
   }
 };
-
 

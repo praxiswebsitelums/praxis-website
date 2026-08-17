@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://praxis.lums.edu.pk/sitemap.xml

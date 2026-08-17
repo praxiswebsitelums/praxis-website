@@ -1,15 +1,7 @@
-/* =====================================================================
-   EVENTS PAGE — page-specific styles
-
-   The shared editorial system (.ab3, .wrap, .eyebrow, .rv, .mask,
-   on-light, etc.) already lives in css/styles.css and is reused as-is
-   on this page. Only the Events-only pieces live here: the page
-   heading/intro sizing and the maroon-glass alternating event cards.
-   ===================================================================== */
+/* Events page heading, cards and responsive rules. */
 
 
-/* ---- page heading (this page's own h1, sized here since no
-   section-specific h1 rule exists globally for it) ---- */
+
 .events-gallery h1 {
   font-family: var(--serif);
   font-weight: 500;
@@ -19,17 +11,11 @@
   margin: 0 0 28px;
 }
 
-
 .events-intro {
   max-width: 640px;
   font-size: clamp(16.5px, 1.4vw, 19px);
   margin: 0 0 64px;
 }
-
-
-/* =====================================================================
-   EVENT GRID / CARDS
-   ===================================================================== */
 
 .events-grid {
   display: flex;
@@ -37,8 +23,6 @@
   gap: clamp(28px, 3vw, 44px);
 }
 
-
-/* ---- event card: deep maroon smoked glass on the cream page ---- */
 .event-card {
   position: relative;
   display: grid;
@@ -67,8 +51,6 @@
     opacity 0.8s cubic-bezier(0.19, 0.78, 0.24, 1);
 }
 
-
-/* soft inner highlight / subtle reflection along the top edge */
 .event-card::before {
   content: "";
   position: absolute;
@@ -85,9 +67,6 @@
   pointer-events: none;
 }
 
-
-/* fallback for browsers without backdrop-filter support — stays
-   premium without relying on blur */
 @supports not (
   (backdrop-filter: blur(1px)) or
   (-webkit-backdrop-filter: blur(1px))
@@ -101,29 +80,23 @@
   }
 }
 
-
 .event-card.in {
   opacity: 1;
   transform: translateY(0);
 }
 
-
 .event-card.reverse {
   grid-template-columns: 1fr 44%;
 }
-
 
 .event-card.reverse .event-card-media {
   order: 2;
 }
 
-
 .event-card.reverse .event-card-body {
   order: 1;
 }
 
-
-/* hover / focus elevation — declared after .in so it wins at equal specificity */
 .event-card:hover,
 .event-card:focus-within {
   transform: translateY(-8px) scale(1.012);
@@ -131,7 +104,6 @@
     0 40px 90px -34px rgba(74, 17, 25, 0.65),
     inset 0 1px 0 rgba(247, 243, 236, 0.14);
 }
-
 
 .event-card-media {
   position: relative;
@@ -141,7 +113,6 @@
   aspect-ratio: 4 / 3;
 }
 
-
 .event-card-media img {
   width: 100%;
   height: 100%;
@@ -150,23 +121,15 @@
   transition: transform 0.7s cubic-bezier(0.19, 0.78, 0.24, 1);
 }
 
-
 .event-card:hover .event-card-media img,
 .event-card:focus-within .event-card-media img {
   transform: scale(1.05);
 }
 
-
 .event-card-body {
   position: relative;
   z-index: 1;
 }
-
-
-/* =====================================================================
-   CARD TEXT
-   All event-card text is intentionally pure white.
-   ===================================================================== */
 
 .event-card .event-card-date {
   font: 500 11px var(--mono);
@@ -175,7 +138,6 @@
   color: #ffffff;
   margin-bottom: 16px;
 }
-
 
 .event-card .event-card-title {
   font-family: var(--serif);
@@ -187,7 +149,6 @@
   color: #ffffff;
 }
 
-
 .event-card .event-card-desc {
   font-size: 15.5px;
   line-height: 1.7;
@@ -196,13 +157,6 @@
   color: #ffffff;
 }
 
-
-/* =====================================================================
-   RESPONSIVE
-   ===================================================================== */
-
-
-/* laptop / small desktop — keep the horizontal layout, tighten up */
 @media (max-width: 1100px) {
   .event-card {
     grid-template-columns: 42% 1fr;
@@ -215,8 +169,6 @@
   }
 }
 
-
-/* mobile — single column, image always first regardless of alternation */
 @media (max-width: 700px) {
   .event-card,
   .event-card.reverse {
@@ -233,11 +185,6 @@
     max-width: none;
   }
 }
-
-
-/* =====================================================================
-   REDUCED MOTION
-   ===================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .event-card {

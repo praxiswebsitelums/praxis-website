@@ -1,26 +1,6 @@
-/* =====================================================================
-   TEAM PAGE — page-specific styles
-
-   The shared editorial system (.ab3, .wrap, .eyebrow, .rv, .mask, etc.)
-   already lives in css/styles.css and is reused as-is. This file adds
-   only what's unique to Team: the single sticky GB photograph behind
-   alternating transparent/cream sections, the hero, the EC grid, and
-   the director / assistant-director person cards.
-
-   COLOR NOTE: the site's cream/ivory tone is var(--ivory) — there is
-   no --cream variable defined anywhere in the project, so cream
-   sections below use var(--ivory) directly.
-   ===================================================================== */
+/* Team page sections, people cards and responsive rules. */
 
 
-/* =====================================================================
-   BACKGROUND SYSTEM — the one GB photograph
-   ===================================================================== */
-
-/* The photo path is applied once, at runtime, by js/team.js as
-   --team-bg on the document root — team.css never hardcodes the path,
-   so changing images/team-gb.jpg in data/team.js is the only edit
-   ever required to swap the photograph. */
 
 .team-page .team-photo-section {
   position: relative;
@@ -32,16 +12,12 @@
   color: var(--ivory);
 }
 
-/* Desktop/laptop: pin the photograph to the viewport so every
-   transparent section reveals the same continuous image. */
 @media (min-width: 901px) {
   .team-page .team-photo-section {
     background-attachment: fixed;
   }
 }
 
-/* Readability overlay — kept translucent so the photograph stays
-   clearly visible underneath. */
 .team-page .team-photo-section::before {
   content: "";
   position: absolute;
@@ -66,11 +42,6 @@
   color: var(--ink);
 }
 .team-page .team-cream-section .eyebrow { color: var(--maroon); }
-
-
-/* =====================================================================
-   HERO
-   ===================================================================== */
 
 .team-page .team-hero {
   min-height: clamp(560px, 82vh, 880px);
@@ -99,11 +70,6 @@
   margin: 0;
 }
 
-
-/* =====================================================================
-   EXECUTIVE COUNCIL
-   ===================================================================== */
-
 .team-page .team-ec h2 {
   font-size: clamp(40px, 5.6vw, 76px);
   margin-bottom: clamp(40px, 5vw, 60px);
@@ -118,7 +84,7 @@
 @media (max-width: 900px) {
   .team-page .team-ec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  /* three members on a 2-column grid: centre the leftover card */
+  
   .team-page .team-ec-grid > *:nth-child(3):last-child {
     grid-column: 1 / -1;
     max-width: calc(50% - 9px);
@@ -133,11 +99,6 @@
   }
 }
 
-
-/* =====================================================================
-   DEPARTMENTS
-   ===================================================================== */
-
 .team-page .team-department h2 {
   font-size: clamp(32px, 4.2vw, 54px);
   margin-bottom: clamp(44px, 5.6vw, 70px);
@@ -149,7 +110,6 @@
   gap: clamp(20px, 2.6vw, 32px);
 }
 
-/* the assistant-director row gets its own separation from directors */
 .team-page .team-ad-row {
   margin-top: clamp(28px, 3.6vw, 48px);
 }
@@ -160,13 +120,6 @@
   justify-content: center;
   gap: clamp(20px, 2.6vw, 32px);
 }
-
-
-/* =====================================================================
-   PERSON CARDS
-   (shared visual language with the Home EC cards: rounded, cropped
-   portrait, name + role on a dark glass panel over the photo)
-   ===================================================================== */
 
 .team-page .team-card {
   position: relative;
@@ -199,7 +152,6 @@
   transition: transform 0.7s cubic-bezier(0.19, 0.78, 0.24, 1);
 }
 
-/* subtle highlight along the top edge — premium, not glossy */
 .team-page .team-card::after {
   content: "";
   position: absolute;
@@ -252,11 +204,6 @@
   .team-page .team-card { flex: 0 0 100%; max-width: 420px; }
 }
 
-
-/* =====================================================================
-   DEPARTMENT GROUP PHOTO
-   ===================================================================== */
-
 .team-page .team-group-photo {
   position: relative;
   margin-top: clamp(48px, 5.6vw, 80px);
@@ -296,11 +243,6 @@
   .team-page .team-group-photo { aspect-ratio: 4 / 3; }
 }
 
-
-/* =====================================================================
-   RESPONSIVE — HERO
-   ===================================================================== */
-
 @media (max-width: 900px) {
   .team-page .team-hero {
     min-height: clamp(480px, 74vh, 720px);
@@ -314,11 +256,6 @@
     min-height: 78svh;
   }
 }
-
-
-/* =====================================================================
-   REDUCED MOTION
-   ===================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .team-page .team-card,
@@ -339,10 +276,6 @@
     transform: none !important;
   }
 }
-
-/* ================================================================
-   MOBILE — USE MAROON INSTEAD OF GB PHOTO
-   ================================================================ */
 
 @media (max-width: 900px) {
   .team-page .team-photo-section {

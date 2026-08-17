@@ -1,19 +1,6 @@
-/* =====================================================================
-   PRAXIS RESEARCH PAGE — page-specific styles
-
-   The global Praxis design system remains in:
-   css/styles.css
-
-   This file contains only Research-specific components:
-   - research archive intro
-   - research cards
-   - research modal
-   ===================================================================== */
+/* Research cards, modal and responsive rules. */
 
 
-/* =====================================================================
-   RESEARCH ARCHIVE
-   ===================================================================== */
 
 .research-archive-intro {
   max-width: 640px;
@@ -26,11 +13,6 @@
   flex-direction: column;
   gap: clamp(28px, 3vw, 44px);
 }
-
-
-/* =====================================================================
-   RESEARCH CARD
-   ===================================================================== */
 
 .research-card {
   position: relative;
@@ -72,16 +54,11 @@
   order: 1;
 }
 
-
-/* Hover / focus elevation */
 .research-card:hover,
 .research-card:focus-within {
   transform: translateY(-8px) scale(1.012);
   box-shadow: 0 24px 60px -25px rgba(88, 18, 31, 0.55);
 }
-
-
-/* Card image */
 
 .research-card-media {
   position: relative;
@@ -102,9 +79,6 @@
 .research-card:focus-within .research-card-media img {
   transform: scale(1.05);
 }
-
-
-/* Card content */
 
 .research-card-meta {
   font: 500 11px var(--mono);
@@ -131,9 +105,6 @@
   margin: 0 0 26px;
   color: rgba(244, 239, 231, 0.68);
 }
-
-
-/* Details button */
 
 .research-card-link {
   display: inline-flex;
@@ -167,11 +138,6 @@
   color: var(--rose);
 }
 
-
-/* =====================================================================
-   RESPONSIVE CARDS
-   ===================================================================== */
-
 @media (max-width: 900px) {
   .research-card,
   .research-card.reverse {
@@ -188,11 +154,6 @@
     max-width: none;
   }
 }
-
-
-/* =====================================================================
-   REDUCED MOTION
-   ===================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .research-card {
@@ -215,11 +176,6 @@
     transform: none !important;
   }
 }
-
-
-/* =====================================================================
-   RESEARCH MODAL
-   ===================================================================== */
 
 .research-modal-overlay {
   position: fixed;
@@ -360,11 +316,6 @@
 body.research-modal-open {
   overflow: hidden;
 }
-
-
-/* =====================================================================
-   RESPONSIVE MODAL
-   ===================================================================== */
 
 @media (max-width: 600px) {
   .research-modal-overlay {

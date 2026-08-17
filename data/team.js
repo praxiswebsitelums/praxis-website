@@ -1,33 +1,10 @@
-/* =====================================================================
-   PRAXIS TEAM PAGE — data
+/* Team page data. */
 
-   Everything on team.html is driven from this file. Nothing about the
-   Team page structure lives in data/site.js — this keeps Team fully
-   independent from the rest of the site's content.
 
-   HOW TO EDIT
-   -----------
-   - Change hero copy in `hero`.
-   - Add/remove Executive Council members in `ec` (cards use the exact
-     same visual language as the Home page EC section).
-   - Each entry in `departments` renders as one full-width section.
-     Directors and assistantDirectors are two separate arrays — they
-     always render as two separate rows and never merge.
-   - Set `showGroupPhoto: false` on a department to hide its group
-     photo entirely (no empty space is left behind).
-   - The single `backgroundImage` below is the one GB (General Body)
-     photograph used behind the Hero and every odd department — do not
-     add a second background image anywhere else.
-
-   All names below marked "Name" / "Director Name" / "Assistant
-   Director Name" and the five department names are obvious
-   placeholders — swap in the real names, roles and photos when they
-   are available. Nothing here is an invented real Praxis member.
-   ===================================================================== */
 
 window.PRAXIS_TEAM = {
 
-  /* The one GB photograph the whole page is built around. */
+  
   backgroundImage: "images/team/team-gb.jpg",
 
   hero: {
@@ -54,9 +31,7 @@ window.PRAXIS_TEAM = {
     }
   ],
 
-  /* Exactly five departments. Add or remove entries here and the
-     section numbering + transparent/cream alternation update on
-     their own — nothing else needs to change. */
+  
   departments: [
     {
       id: "department-01",

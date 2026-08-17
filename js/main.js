@@ -1,30 +1,150 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const content = window.PRAXIS_CONTENT;
+/* Shared navigation, footer, home interactions and about interactions. */
 
-  // Populate editable content
-  document.querySelectorAll("[data-bind]").forEach((el) => {
-    const path = el.dataset.bind.split(".");
-    let value = content;
-    for (const key of path) value = value?.[key];
-    if (value !== undefined) el.textContent = value;
-  });
+/* Shared navigation. */
 
-  // Navbar
-  const header = document.querySelector(".site-header");
-  const menuButton = document.querySelector(".menu-button");
-  const mobileMenu = document.querySelector(".mobile-menu");
 
-  const updateHeader = () => header?.classList.toggle("scrolled", window.scrollY > 30);
+function renderSiteChrome(content) {
+  renderHeader();
+  renderFooter(content.footer || {});
+}
+
+function currentPage() {
+  return window.location.pathname.split("/").pop().toLowerCase() || "index.html";
+}
+
+function renderHeader() {
+  const target = document.querySelector("[data-site-header]");
+  if (!target) return;
+
+  const page = currentPage();
+  const links = [
+    ["Home", "index.html"],
+    ["About", "about.html"],
+    ["Research", "research.html"],
+    ["Events", "events.html"],
+    ["Team", "team.html"],
+    ["Contact Us ↗", "register.html"]
+  ];
+
+  const desktopLinks = links.map(([label, href]) => {
+    const active = page === href ? "active" : "";
+    const cta = href === "register.html" ? "nav-cta" : "";
+    return `<a class="${cta} ${active}" href="${href}"${active ? ' aria-current="page"' : ""}>${label}</a>`;
+  }).join("");
+
+  const mobileLinks = links.map(([label, href]) => {
+    const active = page === href ? "active" : "";
+    return `<a class="${active}" href="${href}"${active ? ' aria-current="page"' : ""}>${label}</a>`;
+  }).join("");
+
+  target.innerHTML = `
+    <header class="site-header">
+      <nav class="navbar">
+        <a class="brand" href="index.html" aria-label="Praxis home">
+          <img src="images/logo.jpg" width="1320" height="1228" alt="Praxis logo">
+          <span class="brand-word">PRAXIS</span>
+        </a>
+        <div class="nav-links">${desktopLinks}</div>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-controls="praxis-mobile-menu" aria-expanded="false">☰</button>
+      </nav>
+      <div class="mobile-menu" id="praxis-mobile-menu">${mobileLinks}</div>
+    </header>
+  `;
+
+  const header = target.querySelector(".site-header");
+  const menuButton = target.querySelector(".menu-button");
+  const mobileMenu = target.querySelector(".mobile-menu");
+
+  const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 30);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
 
-  menuButton?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", mobileMenu?.classList.contains("open") ? "true" : "false");
+  menuButton.addEventListener("click", () => {
+    const open = mobileMenu.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
-  mobileMenu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
 
-  // Hero slider
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => mobileMenu.classList.remove("open"));
+  });
+}
+
+function renderFooter(footer) {
+  const target = document.querySelector("[data-site-footer]");
+  if (!target) return;
+
+  const instagram = footer.instagram || "#";
+  const linkedin = footer.linkedin || "#";
+  const email = footer.email || "";
+
+  target.innerHTML = `
+    <footer class="site-footer praxis-footer">
+      <div class="footer-bg-word" aria-hidden="true">PRAXIS</div>
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <div class="footer-brand-row">
+              <img class="footer-logo" src="images/logo.jpg" width="1320" height="1228" loading="lazy" decoding="async" alt="Praxis logo">
+              <div class="footer-brand">PRAXIS</div>
+            </div>
+            <p class="footer-tag">The Praxis Initiative <br>Lahore University of Management Sciences</p>
+          </div>
+          <div>
+            <div class="footer-heading">Explore</div>
+            <div class="footer-links">
+              <a href="about.html">About</a>
+              <a href="research.html">Research</a>
+              <a href="events.html">Events</a>
+              <a href="team.html">Team</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-heading">Connect</div>
+            <div class="footer-links">
+              <a href="${instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="${linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="${email ? `mailto:${email}` : "#"}">Email</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-heading">Contact Us</div>
+            <p class="footer-contact-copy">Want to connect with Praxis?</p>
+            <p class="footer-contact-text">For sponsorships, collaborations, ideas, or questions, reach out to us.</p>
+            <a class="footer-contact-button" href="register.html">Contact Us ↗</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 The Praxis Initiative, LUMS</span>
+          <span>Developed by <a class="developer-link" href="https://ahmadzeeshan.tech" target="_blank" rel="noopener noreferrer">Ahmad Zeeshan</a></span>
+        </div>
+      </div>
+    </footer>
+  `;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const content = window.PRAXIS_CONTENT || {};
+  renderSiteChrome(content);
+
+document.querySelectorAll("[data-bind], [data-bind-href]").forEach((el) => {
+    const resolve = (path) => {
+      let value = content;
+      for (const key of path.split(".")) value = value?.[key];
+      return value;
+    };
+
+    if (el.dataset.bind) {
+      const value = resolve(el.dataset.bind);
+      if (value !== undefined) el.textContent = value;
+    }
+
+    if (el.dataset.bindHref) {
+      const value = resolve(el.dataset.bindHref);
+      if (value) el.href = value;
+    }
+  });
+  /* Home hero. */
   const slides = content.hero?.slides || [];
   const slideEls = document.querySelectorAll(".hero-slide");
   const eyebrow = document.querySelector("[data-hero-eyebrow]");
@@ -70,17 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHero(0);
     startTimer();
   }
-
-  // Announcement
+  /* Announcement bar. */
   const announcement = document.querySelector(".announcement");
   if (announcement && !content.announcement?.active) announcement.hidden = true;
-
-  // Populate hero slide images from data
   document.querySelectorAll(".hero-slide img").forEach((img, i) => {
     if (slides[i]) img.src = slides[i].image;
   });
-
-  // Executive Council cards on the Home page
+  /* Home EC. */
   const ecContainer = document.querySelector('[data-members="ec.members"]');
   const ecMembers = content.ec?.members || [];
   if (ecContainer) {
@@ -94,57 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
       </article>
     `).join("");
   }
-
-  // Footer links
-  const footer = content.footer || {};
-  const footerLinks = {
-    instagram: footer.instagram,
-    linkedin: footer.linkedin,
-    email: footer.email
-  };
-
-  Object.entries(footerLinks).forEach(([key, value]) => {
-    const link = document.querySelector(`[data-footer-link="${key}"]`);
-    if (!link || !value) return;
-
-    let url = value.trim();
-
-    // Support values accidentally written as Markdown links.
-    const markdownMatch = url.match(/\]\(([^)]+)\)/);
-    if (markdownMatch) url = markdownMatch[1];
-
-    if (key === "email") {
-      url = url.replace(/^mailto:/i, "");
-      link.href = `mailto:${url}`;
-    } else {
-      link.href = url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-    }
-  });
-
-  // Registration form (Phase 1 demo until a real endpoint is configured)
-  const form = document.querySelector("#interest-form");
-  const formMessage = document.querySelector(".form-message");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    form.reset();
-    if (formMessage) {
-      formMessage.textContent = "Thank you — your interest has been recorded on this demo form. Connect a production form endpoint before launch.";
-      formMessage.classList.add("show");
-    }
-  });
-
-  // About page interactions
+  /* About page interactions. */
   const aboutPage = document.querySelector(".ab3");
   if (aboutPage) initializeAboutPage();
 
   function initializeAboutPage() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    // Scroll reveals
     const revealEls = document.querySelectorAll(".ab3 .rv, .ab3 .rv-left, .ab3 .rv-right, .ab3 .mask, .ab3-line");
     if (reduceMotion || !("IntersectionObserver" in window)) {
       revealEls.forEach((el) => el.classList.add("in"));
@@ -159,8 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, { threshold: 0.22, rootMargin: "0px 0px -8% 0px" });
       revealEls.forEach((el) => revealObserver.observe(el));
     }
-
-    // How-we-work stages + connectors
     const stageEls = document.querySelectorAll(".ab3-stage-inner, .ab3-connector");
     if (reduceMotion || !("IntersectionObserver" in window)) {
       stageEls.forEach((el) => el.classList.add("in"));
@@ -176,8 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, { threshold: 0.3 });
       stageEls.forEach((el) => stageObserver.observe(el));
     }
-
-    // Hero logo mouse parallax (desktop only)
     if (canHover && !reduceMotion) {
       const hero = document.querySelector(".ab3-hero");
       const logo = document.getElementById("ab3HeroLogo");
@@ -193,8 +261,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
-
-    // Founder portrait 3D tilt on hover (desktop only)
     if (canHover && !reduceMotion) {
       document.querySelectorAll(".ab3-tilt").forEach((el) => {
         el.addEventListener("mousemove", (event) => {
@@ -208,8 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     }
-
-    // Watermark parallax on scroll (rAF-throttled)
     if (!reduceMotion) {
       const marks = [document.getElementById("ab3WhyMark"), document.getElementById("ab3BelieveMark")].filter(Boolean);
       if (marks.length) {

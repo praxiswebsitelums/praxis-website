@@ -1,17 +1,6 @@
-/* =====================================================================
-   TEAM PAGE — page-specific behaviour
+/* Team sections, person cards and interactions. */
 
-   Reads window.PRAXIS_TEAM and renders the entire #team-root: Hero,
-   Executive Council, and a dynamic set of department sections (each
-   with a separate Director row and Assistant Director row, plus an
-   optional group photo). Also applies the single GB photograph as a
-   CSS custom property so every transparent section reveals the same
-   image, and drives scroll reveal + a restrained desktop-only 3D tilt
-   on person cards.
 
-   Global navigation, header state, mobile menu and footer link
-   behaviour remain in js/main.js and are not duplicated here.
-   ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const data = window.PRAXIS_TEAM;
@@ -32,11 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCardTilt();
 });
 
-
-/* =====================================================================
-   HELPERS
-   ===================================================================== */
-
 function prefersReducedMotion() {
   return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
@@ -45,10 +29,6 @@ function hasFinePointer() {
   return window.matchMedia && window.matchMedia("(pointer: fine)").matches;
 }
 
-/* Splits an array into chunks of at most `size`, used to lay out
-   Director / Assistant Director rows as centred lines of up to three
-   cards — this is what makes 4 render as 3-then-1 and 5 as 3-then-2,
-   always centred, per the spec. */
 function chunk(list, size) {
   const rows = [];
   for (let i = 0; i < list.length; i += size) {
@@ -63,25 +43,11 @@ function el(tag, className) {
   return node;
 }
 
-
-/* =====================================================================
-   GLOBAL BACKGROUND IMAGE
-   ===================================================================== */
-
 function applyBackgroundImage(path) {
   if (!path) return;
-  // A relative url() stored in a custom property resolves against the
-  // stylesheet that reads it (css/team.css), not against team.html —
-  // so it's resolved to an absolute URL here, against the page itself,
-  // before being handed to CSS.
   const absoluteUrl = new URL(path, window.location.href).href;
   document.documentElement.style.setProperty("--team-bg", `url("${absoluteUrl}")`);
 }
-
-
-/* =====================================================================
-   HERO — Section 01
-   ===================================================================== */
 
 function buildHero(hero) {
   hero = hero || {};
@@ -107,11 +73,6 @@ function buildHero(hero) {
   return section;
 }
 
-
-/* =====================================================================
-   EXECUTIVE COUNCIL — Section 02
-   ===================================================================== */
-
 function buildEC(members) {
   members = members || [];
 
@@ -135,15 +96,8 @@ function buildEC(members) {
   return section;
 }
 
-
-/* =====================================================================
-   DEPARTMENTS — Sections 03+
-   ===================================================================== */
-
 function buildDepartment(dept, index) {
   dept = dept || {};
-
-  // Hero = 01, EC = 02, departments start at 03 and count up automatically.
   const number = String(index + 3).padStart(2, "0");
   const isPhoto = index % 2 === 0; // Department 1, 3, 5... => photo; 2, 4... => cream
   const bgClass = isPhoto ? "team-photo-section" : "team-cream-section";
@@ -182,9 +136,6 @@ function buildDepartment(dept, index) {
   return section;
 }
 
-/* A row is one or more centred lines of up to three cards each, so
-   Directors and Assistant Directors always stay visually separate and
-   always stay centred regardless of how many people are in them. */
 function buildPersonRow(people, rowClass) {
   const row = el("div", `team-person-row ${rowClass}`);
 
@@ -238,11 +189,6 @@ function buildGroupPhoto(src, deptName) {
   return wrapper;
 }
 
-
-/* =====================================================================
-   SCROLL REVEAL
-   ===================================================================== */
-
 function setupReveal() {
   const targets = document.querySelectorAll(
     "[data-team-root] .rv, [data-team-root] .mask, [data-team-root] .team-card, [data-team-root] .team-group-photo"
@@ -269,11 +215,6 @@ function setupReveal() {
 
   targets.forEach((target) => observer.observe(target));
 }
-
-
-/* =====================================================================
-   SUBTLE 3D TILT — DESKTOP / FINE POINTER ONLY
-   ===================================================================== */
 
 function setupCardTilt() {
   if (prefersReducedMotion() || !hasFinePointer()) return;

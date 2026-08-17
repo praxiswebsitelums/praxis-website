@@ -1,12 +1,6 @@
-/* =====================================================================
-   PRAXIS RESEARCH PAGE — page-specific behaviour
+/* Research cards, modal and interactions. */
 
-   Reads window.PRAXIS_CONTENT.research and renders the archive header
-   and research cards, then handles the research details modal.
 
-   Global navigation, header state, mobile menu, footer behaviour, and
-   shared reveal systems remain in js/main.js.
-   ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const content = window.PRAXIS_CONTENT?.research;
@@ -19,11 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCardTilt();
 });
 
-
-/* =====================================================================
-   HELPERS
-   ===================================================================== */
-
 function prefersReducedMotion() {
   return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 }
@@ -31,11 +20,6 @@ function prefersReducedMotion() {
 function hasFinePointer() {
   return window.matchMedia?.("(pointer: fine)").matches;
 }
-
-
-/* =====================================================================
-   ARCHIVE HEADER
-   ===================================================================== */
 
 function renderArchiveHeader(content) {
   const eyebrowEl = document.querySelector("[data-research-eyebrow]");
@@ -54,11 +38,6 @@ function renderArchiveHeader(content) {
     introEl.textContent = content.intro;
   }
 }
-
-
-/* =====================================================================
-   RESEARCH CARDS
-   ===================================================================== */
 
 function renderResearchCards(projects) {
   const grid = document.querySelector("[data-research-grid]");
@@ -82,7 +61,7 @@ function createCardElement(project, index) {
 
   const image = document.createElement("img");
   image.src = project.image;
-  image.alt = "";
+  image.alt = project.title || "Research project";
   image.loading = "lazy";
   image.decoding = "async";
 
@@ -115,11 +94,6 @@ function createCardElement(project, index) {
 
   return card;
 }
-
-
-/* =====================================================================
-   MODAL
-   ===================================================================== */
 
 let lastFocusedTrigger = null;
 
@@ -222,11 +196,6 @@ function trapModalFocus(event) {
   }
 }
 
-
-/* =====================================================================
-   MODAL INTERACTIONS
-   ===================================================================== */
-
 function bindResearchInteractions() {
   const grid = document.querySelector("[data-research-grid]");
 
@@ -254,11 +223,6 @@ function bindResearchInteractions() {
     }
   });
 }
-
-
-/* =====================================================================
-   CARD SCROLL REVEAL
-   ===================================================================== */
 
 function setupResearchReveal() {
   const cards = document.querySelectorAll(".research-card");
@@ -290,11 +254,6 @@ function setupResearchReveal() {
     observer.observe(card);
   });
 }
-
-
-/* =====================================================================
-   SUBTLE 3D TILT — DESKTOP / FINE POINTER ONLY
-   ===================================================================== */
 
 function setupCardTilt() {
   if (prefersReducedMotion() || !hasFinePointer()) return;

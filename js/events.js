@@ -1,15 +1,6 @@
-/* =====================================================================
-   EVENTS PAGE — page-specific behaviour
+/* Events page rendering and interactions. */
 
-   Reads window.PRAXIS_CONTENT.events and renders the page heading +
-   event cards in the order given (newest first, no sorting), then
-   adds staggered scroll reveal and subtle fine-pointer tilt.
 
-   Global nav, header scroll state, mobile menu and the shared
-   .rv / .mask reveal system are handled by js/main.js and are not
-   duplicated here. Cards are pure display — no click behaviour,
-   no modal.
-   ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const content = window.PRAXIS_CONTENT && window.PRAXIS_CONTENT.events;
@@ -21,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCardTilt();
 });
 
-/* ---------- motion / input helpers ---------- */
 function prefersReducedMotion() {
   return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
@@ -30,7 +20,6 @@ function hasFinePointer() {
   return window.matchMedia && window.matchMedia("(pointer: fine)").matches;
 }
 
-/* ---------- header (data-driven) ---------- */
 function renderEventsHeader(content) {
   const eyebrowEl = document.querySelector("[data-events-eyebrow]");
   const headingEl = document.querySelector("[data-events-heading]");
@@ -41,14 +30,11 @@ function renderEventsHeader(content) {
   if (introEl && content.intro) introEl.textContent = content.intro;
 }
 
-/* ---------- cards ---------- */
 function renderEventCards(items) {
   const grid = document.querySelector("[data-events-grid]");
   if (!grid) return;
 
   grid.innerHTML = "";
-
-  // Preserve the exact order given in site.js — newest first, no sorting.
   items.forEach((event, index) => {
     grid.appendChild(createEventCard(event, index));
   });
@@ -56,7 +42,6 @@ function renderEventCards(items) {
 
 function createEventCard(event, index) {
   const card = document.createElement("article");
-  // Alternate image position by index: even = image left, odd = image right.
   card.className = "event-card" + (index % 2 === 1 ? " reverse" : "");
 
   const media = document.createElement("div");
@@ -94,7 +79,6 @@ function createEventCard(event, index) {
   return card;
 }
 
-/* ---------- scroll reveal for cards (staggered) ---------- */
 function setupEventsReveal() {
   const cards = document.querySelectorAll(".event-card");
   if (!cards.length) return;
@@ -122,7 +106,6 @@ function setupEventsReveal() {
   });
 }
 
-/* ---------- subtle 3D tilt on hover — desktop / fine-pointer only ---------- */
 function setupCardTilt() {
   if (prefersReducedMotion() || !hasFinePointer()) return;
 
