@@ -264,7 +264,7 @@ window.PRAXIS_CONTENT = {
   },
 
   footer: {
-    email: "praxis@lums.edu.pk",
+    email: "28090083@lums.edu.pk",
     instagram: "https://www.instagram.com/praxislums/",
     linkedin: "https://www.linkedin.com/company/praxis-lums/"
   }
