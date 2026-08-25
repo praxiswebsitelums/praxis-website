@@ -22,6 +22,7 @@ function renderHeader() {
     ["About", "about.html"],
     ["Research", "research.html"],
     ["Events", "events.html"],
+    ["Achievements", "achievements.html"],
     ["Team", "team.html"],
     ["Contact Us ↗", "register.html"]
   ];
@@ -96,6 +97,7 @@ function renderFooter(footer) {
               <a href="about.html">About</a>
               <a href="research.html">Research</a>
               <a href="events.html">Events</a>
+              <a href="achievements.html">Achievements</a>
               <a href="team.html">Team</a>
             </div>
           </div>
@@ -108,9 +110,8 @@ function renderFooter(footer) {
             </div>
           </div>
           <div>
-            <div class="footer-heading">Contact Us</div>
-            <p class="footer-contact-copy">Want to connect with Praxis?</p>
-            <p class="footer-contact-text">For sponsorships, collaborations, ideas, or questions, reach out to us.</p>
+            <div class="footer-heading">Contact</div>
+            <p class="footer-contact-text">If you think our work resonates with you, let’s have a conversation.</p>
             <a class="footer-contact-button" href="register.html">Contact Us ↗</a>
           </div>
         </div>
@@ -147,7 +148,6 @@ document.querySelectorAll("[data-bind], [data-bind-href]").forEach((el) => {
   /* Home hero. */
   const slides = content.hero?.slides || [];
   const slideEls = document.querySelectorAll(".hero-slide");
-  const eyebrow = document.querySelector("[data-hero-eyebrow]");
   const title = document.querySelector("[data-hero-title]");
   const description = document.querySelector("[data-hero-description]");
   const heroButton = document.querySelector("[data-hero-button]");
@@ -161,7 +161,6 @@ document.querySelectorAll("[data-bind], [data-bind-href]").forEach((el) => {
     active = index;
     slideEls.forEach((el, i) => el.classList.toggle("active", i === index));
     const slide = slides[index];
-    if (eyebrow) eyebrow.textContent = slide.eyebrow;
     if (title) title.textContent = slide.title;
     if (description) description.textContent = slide.description;
     if (heroButton) {

@@ -11,15 +11,13 @@ window.PRAXIS_CONTENT = {
     slides: [
       {
         image: "images/hero-01.jpg",
-        eyebrow: "THE PRAXIS INITIATIVE",
         title: "Turn curiosity into action.",
         description: "A student-led initiative at LUMS exploring ideas, questions and the world around us.",
-        buttonText: "Explore Praxis",
-        buttonLink: "#about"
+        buttonText: "Our Achievements",
+        buttonLink: "achievements.html"
       },
       {
         image: "images/hero-02.jpg",
-        eyebrow: "RESEARCH",
         title: "Ask better questions.",
         description: "We create space for students to investigate issues that matter.",
         buttonText: "Our Research",
@@ -27,25 +25,23 @@ window.PRAXIS_CONTENT = {
       },
       {
         image: "images/hero-03.jpg",
-        eyebrow: "DIALOGUE",
         title: "Ideas move when people do.",
         description: "Conversations, events and perspectives bring research beyond the page.",
-        buttonText: "See Events",
+        buttonText: "Our Events",
         buttonLink: "events.html"
       },
       {
         image: "images/hero-04.jpg",
-        eyebrow: "COMMUNITY",
         title: "Built by students.",
-        description: "Praxis is a community for curious people who want to learn, question and contribute.",
-        buttonText: "Contact Us",
-        buttonLink: "register.html"
+        description: "Praxis is a community that becomes invaluable for the people who truly care.",
+        buttonText: "Our Team",
+        buttonLink: "team.html"
       }
     ]
   },
 
   announcement: {
-    active: true,
+    active: false,
     label: "REGISTRATION OPEN",
     text: "Register your interest for Praxis Orientation 2026.",
     buttonText: "Register Now",
@@ -53,17 +49,17 @@ window.PRAXIS_CONTENT = {
   },
 
   about: {
-    eyebrow: "01 / ABOUT",
-    heading: "What is Praxis?",
-    body: "Praxis is a student-led research initiative at LUMS built on a simple belief: ideas matter most when they engage with reality. We move beyond theory to investigate real-world questions, ground our work in lived experiences, and amplify voices that are often overlooked. Through rigorous research, dialogue, and public engagement, we seek to turn knowledge into insight - and insight into meaningful action.",
+    eyebrow: "",
+    heading: "Who Are We?",
+    body: "We are students from different disciplines, interests, and ways of seeing the world, brought together by a willingness to question assumptions and look beyond what is already given. We are writers, researchers, listeners, and collaborators who take curiosity seriously—making room for disagreement, uncertainty, and perspectives that challenge our own. What connects us is not a single lens, but a shared desire to understand more deeply, pursue questions further, and turn that understanding into something meaningful.",
     buttonText: "Learn More",
     buttonLink: "about.html"
   },
 
   whatWeDo: {
-    eyebrow: "02 / WHAT WE DO",
+    eyebrow: "",
     heading: "What we do?",
-    body: "Praxis turns questions into research and research into action. We investigate real-world issues through primary and meta-research, amplify perspectives that are often overlooked, and create spaces for meaningful dialogue. Through our research, publications, and engagement, we work to make knowledge actionable and drive meaningful change.",
+    body: "Praxis turns important questions into thorough research and that research into impactful action. We investigate real-world issues through primary and meta-research, amplify perspectives that are often overlooked, and create spaces for meaningful dialogue. Through our research, publications, and engagement, we work to make knowledge actionable and drive meaningful change.",
     image: "images/what-we-do.jpg",
     items: [
       {
@@ -90,7 +86,7 @@ window.PRAXIS_CONTENT = {
   },
 
   whyJoin: {
-    eyebrow: "03 / WHY PRAXIS",
+    eyebrow: "",
     title: "Why Join Praxis?",
     heading: "Come with questions. Leave with perspective.",
     body: "Praxis is a space to explore questions that matter, work alongside curious people, and turn ideas into meaningful work. Whether you're interested in research, writing, discussion, or simply understanding the world around you better, Praxis gives you the opportunity to learn, contribute, and grow.",
@@ -103,7 +99,7 @@ window.PRAXIS_CONTENT = {
   },
 
   ec: {
-    eyebrow: "04 / EC",
+    eyebrow: "",
     heading: "Executive Council 26-27",
     intro: "The people who lead Praxis.",
     members: [
@@ -128,7 +124,7 @@ window.PRAXIS_CONTENT = {
   
 
   research: {
-    eyebrow: "01 / OUR RESEARCH",
+    eyebrow: "OUR RESEARCH",
     heading: "Research that asks something of us.",
     intro: "Explore the questions Praxis has investigated. Each project begins with a question, develops through research, and ends by opening the door to further conversation.",
 
@@ -183,7 +179,7 @@ window.PRAXIS_CONTENT = {
   },
 
     events: {
-    eyebrow: "01 / EVENTS",
+    eyebrow: "EVENTS",
     heading: "Ideas in motion.",
     intro: "Below are some of the conversations, talks, and activities that have shaped the Praxis community.",
 
@@ -192,7 +188,7 @@ window.PRAXIS_CONTENT = {
         id: "event-05",
         date: "APRIL 2026",
         title: "All-Societies Conference",
-        shortDescription: "Praxis presented its research based on 40 interviews with NOP students and screened a documentary produced by Praxis, followed by open deliberations on making LUMS societies more inclusive and meritocratic.",
+        shortDescription: "Praxis presented its research findings based on 40 interviews with NOP students to all the societies at LUMS, along with a relevant documentary produced by Praxis. The presentation was followed by open deliberations on making LUMS societies more inclusive and meritocratic.",
         image: "images/event/event-05.jpg"
       },
       {
@@ -206,7 +202,7 @@ window.PRAXIS_CONTENT = {
         id: "event-03",
         date: "NOVEMBER 2025",
         title: "Researching Vulnerability and Resilience: Narratives Through Film",
-        shortDescription: "Praxis screened “Shadow of Fear” on military operations in Waziristan and “The Road That Never Ends” on enforced disappearances, followed by a panel with Amina Masood, Aisha Masood, Jamil Iqbal, and Nida Kirmani. Praxis explored the human cost of conflict and enforced disappearances, fostering empathy, critical reflection, and dialogue on justice, memory, and recovery.",
+        shortDescription: "Praxis screened Director Jamil Iqbal’s documentaries “Shadow of Fear” on military operations in Waziristan and “The Road That Never Ends” on enforced disappearances, followed by a panel with Chairperson Defence of Human Rights (DHR) Amina Masood Janjua, her daughter Aishah Masood, Director Jamil Iqbal, and Dr. Nida Kirmani. Praxis explored the human cost of conflict and enforced disappearances, fostering empathy, critical reflection, and dialogue on justice, memory, and recovery.",
         image: "images/event/event-03.jpg"
       },
       {
@@ -235,7 +231,7 @@ window.PRAXIS_CONTENT = {
     ],
 
     ec: {
-      eyebrow: "01 / EXECUTIVE COUNCIL",
+      eyebrow: "",
       heading: "Reach the team.",
       intro: "For sponsorships, collaborations, partnerships, ideas, or general enquiries, get in touch with any member of our Executive Council.",
       members: [
@@ -261,6 +257,23 @@ window.PRAXIS_CONTENT = {
       eyebrow: "02 / CONNECT",
       heading: "Find Praxis online."
     }
+  },
+
+
+  achievements: {
+    eyebrow: "ACHIEVEMENTS",
+    heading: "What Praxis has achieved.",
+    intro: "A record of milestones, recognition, and work that has moved Praxis forward.",
+
+    items: [
+      {
+        id: "achievement-01",
+        date: "APRIL 2026",
+        title: "CCA-LASA Award",
+        shortDescription: "Description",
+        image: "images/achievements/achievement-01.jpg"
+      }
+    ]
   },
 
   footer: {

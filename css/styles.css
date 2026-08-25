@@ -72,7 +72,7 @@ img { display: block; max-width: 100%; }
 /* Home hero. */
 .hero {
   position: relative; min-height: 94vh; display: grid; align-items: end;
-  background: var(--ink); color: var(--ivory); overflow: hidden;
+  background: var(--maroon-deep); color: var(--ivory); overflow: hidden;
 }
 .hero-slides, .hero-slide { position:absolute; inset:0; }
 .hero-slide { opacity:0; transform:scale(1.04); transition: opacity 1s ease, transform 5s ease; }
@@ -130,7 +130,7 @@ img { display: block; max-width: 100%; }
 
 /* Shared sections. */
 .section { padding:130px 0; }
-.section-dark { background:var(--ink); color:var(--ivory); }
+.section-dark { background:var(--maroon-deep); color:var(--ivory); }
 .section-maroon { background:var(--maroon-deep); color:var(--ivory); }
 .section-header { display:grid; grid-template-columns: 1fr 2fr; gap:40px; margin-bottom:60px; }
 .section-header h2 { margin:0; font-family:var(--serif); font-size:clamp(48px,7vw,92px); line-height:.92; letter-spacing:-.045em; font-weight:500; }
@@ -1063,7 +1063,7 @@ img { display: block; max-width: 100%; }
 .ab3 .on-dark .eyebrow, .ab3 .on-maroon .eyebrow{ color:rgba(247,243,236,.55); }
 
 .ab3 .on-light{ background:var(--cream); color:var(--ink); }
-.ab3 .on-dark{ background:var(--ink); color:#F4EFE7; }
+.ab3 .on-dark{ background:var(--maroon-deep); color:#F4EFE7; }
 .ab3 .on-maroon{ background:var(--maroon-deep); color:#F4EFE7; }
 .ab3 p{ color:#57504D; line-height:1.72; }
 .ab3 .on-dark p, .ab3 .on-maroon p{ color:rgba(244,239,231,.68); }
@@ -1216,3 +1216,26 @@ img { display: block; max-width: 100%; }
 .ab3-cta-orbit{ position:absolute; width:80%; aspect-ratio:1; }
 @media(prefers-reduced-motion:reduce){ .ab3-cta-mark img{ animation:none } }
 @media(max-width:900px){ .ab3-cta .wrap{ grid-template-columns:1fr; gap:36px } .ab3-cta-mark{ height:150px; order:-1 } }
+
+
+/* Alternate About sections between cream and maroon. */
+.ab3 .ab3-believe.on-light .ab3-believe-list { border-color: var(--line-on-light); }
+.ab3 .ab3-believe.on-light .ab3-belief { border-color: var(--line-on-light); }
+.ab3 .ab3-believe.on-light .ab3-belief .n { color: rgba(13, 12, 12, .42); }
+
+.ab3 .ab3-founding.on-light .ab3-founder {
+  border-color: var(--line-on-light);
+}
+.ab3 .ab3-founding.on-light .ab3-founder-orbit {
+  border-color: rgba(74, 17, 25, .18);
+}
+.ab3 .ab3-founding.on-light .ab3-founder-label,
+.ab3 .ab3-founding.on-light .ab3-founder-role {
+  color: var(--maroon);
+}
+.ab3 .ab3-founding.on-light .ab3-founder-frame {
+  border-color: rgba(74, 17, 25, .16);
+}
+.ab3 .ab3-founding.on-light .ab3-founder-frame:after {
+  background: linear-gradient(135deg, rgba(74, 17, 25, .08), transparent 45%);
+}

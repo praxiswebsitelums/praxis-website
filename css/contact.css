@@ -295,3 +295,25 @@
     padding-left: 6px !important;
   }
 }
+
+
+/* Alternate Contact sections. */
+.contact-section.on-maroon {
+  color: var(--ivory);
+  border-color: rgba(247, 243, 236, .16);
+}
+.contact-section.on-maroon .contact-section-head p {
+  color: rgba(247, 243, 236, .68);
+}
+.contact-section.on-maroon .connect-link {
+  border-color: rgba(247, 243, 236, .18);
+}
+.contact-section.on-maroon .connect-link-supporting {
+  color: rgba(247, 243, 236, .62);
+}
+.contact-section.on-maroon .connect-link:hover .connect-link-label,
+.contact-section.on-maroon .connect-link:focus-visible .connect-link-label,
+.contact-section.on-maroon .connect-link:hover .connect-link-supporting,
+.contact-section.on-maroon .connect-link:focus-visible .connect-link-supporting {
+  color: var(--rose);
+}

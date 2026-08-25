@@ -3,7 +3,9 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const content = window.PRAXIS_CONTENT && window.PRAXIS_CONTENT.events;
+  const page = document.querySelector("[data-gallery-key]");
+  const key = page?.dataset.galleryKey || "events";
+  const content = window.PRAXIS_CONTENT && window.PRAXIS_CONTENT[key];
   if (!content) return;
 
   renderEventsHeader(content);
