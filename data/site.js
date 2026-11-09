@@ -269,8 +269,8 @@ window.PRAXIS_CONTENT = {
       {
         id: "achievement-01",
         date: "APRIL 2026",
-        title: "CCA-LASA Award",
-        shortDescription: "Description",
+        title: "Honourable Mention for Emerging Impact Award",
+        shortDescription: "Praxis Initiative received an Honourable Mention for the Emerging Impact Award, recognizing its early contributions to research, dialogue, and meaningful social impact at LUMS.",
         image: "images/achievements/achievement-01.jpg"
       }
     ]
