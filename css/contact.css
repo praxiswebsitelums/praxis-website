@@ -251,10 +251,21 @@
 }
 
 @media (max-width: 640px) {
-  .contact-ec-grid { grid-template-columns: 1fr; gap: 20px; }
-  .contact-ec-grid > *:nth-child(3):last-child { max-width: 420px; }
+  .contact-ec-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-  .contact-card { min-height: 185px; }
+  .contact-ec-grid > *:nth-child(3):last-child {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .contact-card {
+    min-height: 185px;
+    width: 100%;
+  }
 
   .connect-link {
     flex-direction: column;
