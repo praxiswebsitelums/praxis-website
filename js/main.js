@@ -107,6 +107,7 @@ function renderFooter(footer) {
               <a href="${instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="${linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="${email ? `mailto:${email}` : "#"}">Email</a>
+              <a href="privacy.html">Privacy Notice</a>
             </div>
           </div>
           <div>
